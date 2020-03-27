@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BloodSplat_Mat
+  m_Shader: {fileID: -6465566751694194690, guid: 2ec2242a818d653458e79289488b25ef,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_64FC27F0:
+        m_Texture: {fileID: 2800000, guid: 59deab1d549aa8547b3baeea5f301128, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_201A4230: 4
+    - Vector1_460E3EDE: 50
+    - Vector1_8B9863BA: 1
+    - Vector1_90E4142D: 1
+    - Vector1_EB46000C: 0.1
+    m_Colors:
+    - Color_19F6F49E: {r: 2.670157, g: 0, b: 0, a: 1}
