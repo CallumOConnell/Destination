@@ -34,9 +34,8 @@ namespace Destination
             }
         }
 
-        private void AddDigitToCodeSequence(string digitEntered)
+        private void AddDigitToCodeSequence(string digitEntered)+
         {
-            Debug.Log("A");
 
             if (code.Length < 4)
             {
