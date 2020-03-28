@@ -7,7 +7,7 @@ namespace Destination
     {
         public static bool isPaused = false;
 
-        public GameObject pauseMenu = null;
+        public GameObject pauseMenu;
 
         private void Update()
         {
@@ -44,7 +44,7 @@ namespace Destination
 
         public void LoadMenu()
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("Main_Menu");
 
             Time.timeScale = 1f;
         }

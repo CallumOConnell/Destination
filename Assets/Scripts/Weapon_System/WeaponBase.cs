@@ -8,7 +8,7 @@ public class WeaponBase : MonoBehaviour
     public float damage = 10f;
     public float range = 100f;
     public float impactForce = 30f;
-    public float fireRate = 15f;
+    public float fireRate = 5f;
     public float reloadTime = 1f;
     public float ammoCheckTime = 3f;
 
@@ -39,12 +39,6 @@ public class WeaponBase : MonoBehaviour
     public GameObject firemodePanel = null;
 
     public TextMeshProUGUI firemodeText = null;
-
-    [Space, Header("Weapon Aiming Settings")]
-    public Transform aimDownSight;
-    public Transform hipfire;
-
-    public float aimDownSightsSpeed = 8f;
 
     [Space, Header("Weapon Effects")]
     public GameObject bloodEffect = null;
@@ -78,9 +72,10 @@ public class WeaponBase : MonoBehaviour
 
     private void OnEnable()
     {
-        isReloading = false;
+        //currentFireMode = FireModes.Single;
 
-        //animator.SetBool("isReloading", false);
+        Debug.Log($"fireRate: {fireRate}");
+        Debug.Log($"fireMode: {currentFireMode}");
     }
 
     private void Update()
@@ -113,7 +108,7 @@ public class WeaponBase : MonoBehaviour
             StartCoroutine(CheckAmmo());
         }
 
-        //AimDownSights();
+        AimDownSights();
     }
 
     private void Shoot()
@@ -127,7 +122,7 @@ public class WeaponBase : MonoBehaviour
 
         // Muzzle flash here
 
-        animator.SetBool("isFullAuto", true);
+        //animator.SetBool("isFullAuto", true);
 
         audioSource.PlayOneShot(gunShootSound);
 
@@ -289,7 +284,7 @@ public class WeaponBase : MonoBehaviour
 
                             firemodeText.text = "Single";
 
-                            animator.SetBool("isSingleShot", true);
+                            //animator.SetBool("", true);
 
                             return;
                         }
@@ -317,7 +312,7 @@ public class WeaponBase : MonoBehaviour
 
                             firemodeText.text = "Auto";
 
-                            animator.SetBool("isFullAuto", true);
+                            //animator.SetBool("", true);
 
                             return;
                         }
@@ -332,11 +327,11 @@ public class WeaponBase : MonoBehaviour
     {
         if (Input.GetButton("Fire2"))
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, aimDownSight.position, Time.deltaTime * aimDownSightsSpeed);
+            animator.SetBool("isAimDownSight", true);
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, hipfire.position, Time.deltaTime * aimDownSightsSpeed);
+            animator.SetBool("isAimDownSight", false);
         }
     }
 }
