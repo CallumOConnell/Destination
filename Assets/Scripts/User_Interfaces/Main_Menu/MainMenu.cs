@@ -15,7 +15,6 @@ namespace Destination
         {
             float volume = PlayerPrefs.GetFloat("VolumeSliderLevel", 0);
 
-            audioMixer.SetFloat("volume", volume);
         }
 
         public void LoadGame()

@@ -34,7 +34,6 @@ public class LightFlicker : MonoBehaviour
 
     private void Update()
     {
-        if (light == null) return;
 
         while (smoothQueue.Count >= smoothing)
         {

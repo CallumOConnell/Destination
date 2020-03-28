@@ -2,15 +2,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-using TMPro;
 
 namespace Destination
 {
     public class SettingsMenu : MonoBehaviour
     {
-        public TMPro.TMP_Dropdown resolutionDropDown;
+        public Dropdown resolutionDropDown;
 
-        public TMPro.TMP_Dropdown graphicsDropDown;
+        public Dropdown graphicsDropDown;
 
         public Slider masterSlider;
         public Slider sfxSlider;
