@@ -24,7 +24,11 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
+<<<<<<< Updated upstream
     m_Value: -5
+=======
+    m_Value: -1
+>>>>>>> Stashed changes
   multiplier:
     m_OverrideState: 1
     m_Value: 1
