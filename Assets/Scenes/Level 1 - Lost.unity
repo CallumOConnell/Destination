@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0960959, g: 0.068303175, b: 0.062828034, a: 1}
+  m_IndirectSpecularColor: {r: 0.000046928446, g: 0.000033359534, b: 0.00003068454,
+    a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1753,14 +1754,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524857048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 615564254}
   - {fileID: 1569517693}
-  m_Father: {fileID: 1990491247}
-  m_RootOrder: 4
+  m_Father: {fileID: 2130158937}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1890,7 +1891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &592797132
 Transform:
   m_ObjectHideFlags: 0
@@ -11221,7 +11222,6 @@ RectTransform:
   - {fileID: 2130158937}
   - {fileID: 326858037}
   - {fileID: 1455660490}
-  - {fileID: 524857049}
   m_Father: {fileID: 1692818300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11320,8 +11320,9 @@ MonoBehaviour:
   inputText: {fileID: 1701322032}
   safeObject: {fileID: 1110346452}
   safeCodeUI: {fileID: 1455660489}
-  audioSource: {fileID: 0}
-  error: {fileID: 8300000, guid: 1b6e5f5abae08034cb23914305c1e35e, type: 3}
+  audioSource: {fileID: 1358610671}
+  errorSound: {fileID: 8300000, guid: 1b6e5f5abae08034cb23914305c1e35e, type: 3}
+  correctCode: 1234
 --- !u!114 &1990491254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11847,6 +11848,7 @@ RectTransform:
   - {fileID: 1693808610}
   - {fileID: 1855630600}
   - {fileID: 2071155087}
+  - {fileID: 524857049}
   m_Father: {fileID: 1990491247}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12045,6 +12047,21 @@ PrefabInstance:
       propertyPath: impactParent
       value: 
       objectReference: {fileID: 900944895}
+    - target: {fileID: 2202083104106610240, guid: 25b39f7f1b1f63242b5cde7675257681,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202083104106610242, guid: 25b39f7f1b1f63242b5cde7675257681,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202083105496459509, guid: 25b39f7f1b1f63242b5cde7675257681,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2202083105496459513, guid: 25b39f7f1b1f63242b5cde7675257681,
         type: 3}
       propertyPath: canvas

@@ -11,7 +11,9 @@ namespace Destination
 
         public Dropdown graphicsDropDown;
 
-        public Slider volumeSlider;
+        public Slider masterSlider;
+        public Slider sfxSlider;
+        public Slider musicSlider;
 
         public AudioMixer masterMixer;
 
@@ -45,9 +47,9 @@ namespace Destination
 
             resolutionDropDown.RefreshShownValue();
 
-            float sliderPosition = PlayerPrefs.GetFloat("MasterVolume", 1);
-
-            volumeSlider.value = sliderPosition;
+            masterSlider.value = PlayerPrefs.GetFloat("MasterVolumeSliderPosition", 1);
+            sfxSlider.value = PlayerPrefs.GetFloat("SfxVolumeSliderPosition", 1);
+            musicSlider.value = PlayerPrefs.GetFloat("MusicVolumeSliderPosition", 1);
 
             int currentGraphicsQuality = QualitySettings.GetQualityLevel();
 

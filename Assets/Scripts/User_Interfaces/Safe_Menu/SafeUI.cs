@@ -1,16 +1,23 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
 namespace Destination
 {
     public class SafeUI : MonoBehaviour
     {
-        public TMP_InputField inputText = null;
+        public TMP_InputField inputText;
 
-        public GameObject safeObject = null;
-        public GameObject safeCodeUI = null;
+        public GameObject safeObject;
+        public GameObject safeCodeUI;
 
-        private Safe safe = null;
+        public AudioSource audioSource;
+
+        public AudioClip errorSound;
+
+        public string correctCode = "1234";
+
+        private Safe safe;
 
         private string code;
 
@@ -36,8 +43,6 @@ namespace Destination
 
         private void AddDigitToCodeSequence(string digitEntered)
         {
-            Debug.Log("A");
-
             if (code.Length < 4)
             {
                 switch (digitEntered)
@@ -102,16 +107,17 @@ namespace Destination
                             DisplayCodeSequence();
                             break;
                         }
-                    case "Clear":
-                        {
-                            ResetInput();
-                            break;
-                        }
                 }
             }
-            else if (code.Length == 4)
+
+            if (digitEntered == "Clear")
             {
-                CheckCode();
+                ResetInput();
+            }
+            
+            if (code.Length == 4)
+            {
+                StartCoroutine(CheckCode());
             }
         }
 
@@ -123,18 +129,18 @@ namespace Destination
             inputText.text = "";
         }
 
-        private void CheckCode()
+        private IEnumerator CheckCode()
         {
-            if (code == "1234")
+            yield return new WaitForSeconds(1f);
+
+            if (code == correctCode)
             {
-                Debug.Log("Code Entered Correctly");
                 safeCodeUI.SetActive(false);
                 safe.OpenSafe();
             }
             else
             {
-                Debug.Log("Code Entered Incorrect");
-                // Play Error Sound
+                audioSource.PlayOneShot(errorSound);
                 ResetInput();
             }
         }

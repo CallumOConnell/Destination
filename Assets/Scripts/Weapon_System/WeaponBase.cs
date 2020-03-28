@@ -93,6 +93,10 @@ public class WeaponBase : MonoBehaviour
 
             Shoot();
         }
+        else
+        {
+            animator.SetBool("isFullAuto", false);
+        }
 
         if (Input.GetKeyDown(KeyCode.F)) // Manual Firemode Change
         {
@@ -121,7 +125,9 @@ public class WeaponBase : MonoBehaviour
             return;
         }
 
-        //muzzleFlash.Play();
+        // Muzzle flash here
+
+        animator.SetBool("isFullAuto", true);
 
         audioSource.PlayOneShot(gunShootSound);
 
@@ -283,7 +289,7 @@ public class WeaponBase : MonoBehaviour
 
                             firemodeText.text = "Single";
 
-                            animator.SetBool("isFullAuto", true);
+                            animator.SetBool("isSingleShot", true);
 
                             return;
                         }
@@ -311,7 +317,7 @@ public class WeaponBase : MonoBehaviour
 
                             firemodeText.text = "Auto";
 
-                            animator.SetBool("isSingleShot", true);
+                            animator.SetBool("isFullAuto", true);
 
                             return;
                         }
