@@ -8,7 +8,6 @@ namespace Destination
     public class SettingsMenu : MonoBehaviour
     {
         public Dropdown resolutionDropDown;
-
         public Dropdown graphicsDropDown;
 
         public Slider masterSlider;
@@ -105,14 +104,8 @@ namespace Destination
 
         public void OpenMain()
         {
-
             mainMenu.SetActive(true);
-
-            CloseMenu();
-
+            settingsMenu.SetActive(false);
         }
-
-        private void CloseMenu() => settingsMenu.SetActive(false);
-
     }
 }

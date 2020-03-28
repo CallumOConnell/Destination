@@ -7,6 +7,7 @@ namespace Destination
     public class InventoryObject : ScriptableObject
     {
         public List<InventorySlot> container = new List<InventorySlot>();
+
         public void AddItem(ItemObject _item, int _amount)
         {
             bool hasItem = HasItem(_item);
@@ -14,6 +15,30 @@ namespace Destination
             if (!hasItem)
             {
                 container.Add(new InventorySlot(_item, _amount));
+            }
+        }
+
+        public void RemoveItem(ItemObject _item, int _amount)
+        {
+            bool hasItem = HasItem(_item);
+
+            if (hasItem)
+            {
+                InventorySlot slot = FindInventorySlot(container, _item);
+
+                if (slot != null)
+                {
+                    int currentAmount = slot.amount;
+
+                    if (currentAmount - _amount > 0)
+                    {
+                        slot.SetAmount(_amount);
+                    }
+                    else
+                    {
+                        container.Remove(slot);
+                    }     
+                }
             }
         }
 
@@ -42,6 +67,19 @@ namespace Destination
 
             return false;
         }
+
+        private InventorySlot FindInventorySlot(List<InventorySlot> _inventory, ItemObject _item)
+        {
+            foreach (InventorySlot slot in _inventory)
+            {
+                if (slot.item == _item)
+                {
+                    return slot;
+                }
+            }
+
+            return null;
+        }
     }
 
     [System.Serializable]
@@ -57,6 +95,6 @@ namespace Destination
             amount = _amount;
         }
 
-        public void AddAmount(int _value) => amount = _value;
+        public void SetAmount(int _value) => amount = _value;
     }
 }
