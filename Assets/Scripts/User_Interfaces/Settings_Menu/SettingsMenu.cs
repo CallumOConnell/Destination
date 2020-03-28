@@ -2,20 +2,24 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using TMPro;
 
 namespace Destination
 {
     public class SettingsMenu : MonoBehaviour
     {
-        public Dropdown resolutionDropDown;
+        public TMPro.TMP_Dropdown resolutionDropDown;
 
-        public Dropdown graphicsDropDown;
+        public TMPro.TMP_Dropdown graphicsDropDown;
 
         public Slider masterSlider;
         public Slider sfxSlider;
         public Slider musicSlider;
 
         public AudioMixer masterMixer;
+
+        public GameObject settingsMenu;
+        public GameObject mainMenu;
 
         private Resolution[] resolutions;
 
@@ -99,5 +103,17 @@ namespace Destination
 
             PlayerPrefs.SetFloat("MusicVolume", volume);
         }
+
+        public void OpenMain()
+        {
+
+            mainMenu.SetActive(true);
+
+            CloseMenu();
+
+        }
+
+        private void CloseMenu() => settingsMenu.SetActive(false);
+
     }
 }
