@@ -43,8 +43,9 @@ public class WeaponBase : MonoBehaviour
 
     [Space, Header("Weapon ADS")]
     public Vector3 aimPos;
-    private Vector3 originalPos;
     public float adsSpeed = 8;
+    private Vector3 originalPos;
+    private bool isAiming;
 
     [Space, Header("Weapon Effects")]
     public GameObject bloodEffect;
@@ -87,12 +88,12 @@ public class WeaponBase : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate; // .25 seconds - The greater the firerate less time between shots
-
+            animator.SetBool("isFire", true);
             Shoot();
         }
         else
         {
-
+            animator.SetBool("isFire", false);
         }
 
         if (Input.GetKeyDown(KeyCode.F)) // Manual Firemode Change
@@ -111,6 +112,8 @@ public class WeaponBase : MonoBehaviour
         }
 
         AimDownSights();
+
+
     }
 
     private void Shoot()
@@ -327,12 +330,14 @@ public class WeaponBase : MonoBehaviour
         {
 
             transform.localPosition = Vector3.Lerp(transform.localPosition, aimPos, Time.deltaTime * adsSpeed);
+            isAiming = true;
 
         }
         else
         {
 
             transform.localPosition = Vector3.Lerp(transform.localPosition, originalPos, Time.deltaTime * adsSpeed);
+            isAiming = false;
 
         }
     }
