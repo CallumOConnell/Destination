@@ -8,9 +8,6 @@ namespace Destination
         public float gravity = -9.81f;
         public float jumpHeight = 3f;
         public float sprintSpeed = 12f;
-        public float crouchNoise = 2.5f;
-        public float walkNoise = 5f;
-        public float runNoise = 7.5f;
         public float groundDistance = 0.4f;
 
         public Transform groundCheck = null;
@@ -25,10 +22,6 @@ namespace Destination
         private bool isCrouched = false;
 
         private CharacterController controller = null;
-
-        public SphereCollider sphereCollider = null;
-
-        //public Animator animator = null;
 
         private AudioSource audioSource = null;
 
@@ -70,13 +63,11 @@ namespace Destination
 
             if (Input.GetKey(KeyCode.LeftShift) && isGrounded && !isCrouched)
             {
-                sphereCollider.radius = runNoise;
                 controller.Move(move * sprintSpeed * Time.deltaTime);
                 //anim.SetBool("isRunning", true);
             }
             else
             {
-                sphereCollider.radius = walkNoise;
                 //anim.SetBool("isRunning", false);
             }
 
@@ -85,7 +76,6 @@ namespace Destination
             if (Input.GetKey(KeyCode.LeftControl))
             {
                 isCrouched = true;
-                sphereCollider.radius = crouchNoise;
                 controller.height = 1;
                 speed = 3;
             }

@@ -41,6 +41,11 @@ public class WeaponBase : MonoBehaviour
 
     public TextMeshProUGUI firemodeText;
 
+    [Space, Header("Weapon ADS")]
+    public Vector3 aimPos;
+    private Vector3 originalPos;
+    public float adsSpeed = 8;
+
     [Space, Header("Weapon Effects")]
     public GameObject bloodEffect;
     public GameObject impactEffect;
@@ -67,9 +72,12 @@ public class WeaponBase : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
 
         currentAmmo = maxAmmo;
+
+        originalPos = transform.localPosition;
+
     }
 
     private void Update()
@@ -84,7 +92,7 @@ public class WeaponBase : MonoBehaviour
         }
         else
         {
-            animator.SetBool("isFullAuto", false);
+
         }
 
         if (Input.GetKeyDown(KeyCode.F)) // Manual Firemode Change
@@ -115,8 +123,6 @@ public class WeaponBase : MonoBehaviour
         }
 
         // Muzzle flash here
-
-        //animator.SetBool("isFullAuto", true);
 
         audioSource.PlayOneShot(gunShootSound);
 
@@ -152,13 +158,13 @@ public class WeaponBase : MonoBehaviour
     {
         isReloading = true;
 
-        animator.SetBool("isReloading", true);
+        //animator.SetBool("isReloading", true);
 
         audioSource.PlayOneShot(gunUnloadSound); // Play weapon unload magazine sound
 
         yield return new WaitForSeconds(reloadWaitTime - .25f);
 
-        animator.SetBool("isReloading", false);
+        //animator.SetBool("isReloading", false);
 
         audioSource.PlayOneShot(gunReloadSound); // Play weapon reload sound
 
@@ -186,7 +192,7 @@ public class WeaponBase : MonoBehaviour
 
         DisplayAmmoCount();
 
-        animator.SetBool("checkAmmo", true);
+        //animator.SetBool("checkAmmo", true);
 
         audioSource.PlayOneShot(gunUnloadSound);
 
@@ -194,7 +200,7 @@ public class WeaponBase : MonoBehaviour
 
         yield return new WaitForSeconds(ammoCheckWaitTime);
 
-        animator.SetBool("checkAmmo", false);
+        //animator.SetBool("checkAmmo", false);
 
         audioSource.PlayOneShot(gunReloadSound);
 
@@ -278,7 +284,7 @@ public class WeaponBase : MonoBehaviour
 
                             firemodeText.text = "Single";
 
-                            //animator.SetBool("", true);
+                            
 
                             return;
                         }
@@ -293,8 +299,6 @@ public class WeaponBase : MonoBehaviour
 
                             firemodeText.text = "Burst";
 
-                            //animator.SetBool("", true);
-
                             return;
                         }
 
@@ -308,8 +312,6 @@ public class WeaponBase : MonoBehaviour
 
                             firemodeText.text = "Auto";
 
-                            //animator.SetBool("", true);
-
                             return;
                         }
                         
@@ -321,13 +323,17 @@ public class WeaponBase : MonoBehaviour
 
     private void AimDownSights()
     {
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2") && !isReloading)
         {
-            animator.SetBool("isAimDownSight", true);
+
+            transform.localPosition = Vector3.Lerp(transform.localPosition, aimPos, Time.deltaTime * adsSpeed);
+
         }
         else
         {
-            animator.SetBool("isAimDownSight", false);
+
+            transform.localPosition = Vector3.Lerp(transform.localPosition, originalPos, Time.deltaTime * adsSpeed);
+
         }
     }
 }
