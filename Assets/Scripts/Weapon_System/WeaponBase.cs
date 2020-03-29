@@ -5,51 +5,52 @@ using TMPro;
 public class WeaponBase : MonoBehaviour
 {
     [Space, Header("Weapon General Settings")]
-    public float damage = 10f;
-    public float range = 100f;
-    public float impactForce = 30f;
+    public float damage = 1f;
+    public float range = 1f;
+    public float impactForce = 1f;
     public float fireRate = 5f;
-    public float reloadTime = 1f;
-    public float ammoCheckTime = 3f;
+    public float reloadWaitTime = 1f;
+    public float ammoCheckWaitTime = 3f;
+    public float firemodeWaitTime = 2f;
 
-    public Camera mainCamera = null;
+    public Camera mainCamera;
 
-    public Transform impactParent = null;
+    public Transform impactParent;
 
     [Space, Header("Weapon Ammo Settings")]
     public int maxAmmo = 30;
-    public int spareAmmo = 0;
+    public int spareAmmo = 90;
 
-    public GameObject ammoPanel = null;
+    public GameObject ammoPanel;
 
-    public TextMeshProUGUI ammoText = null;
+    public TextMeshProUGUI ammoText;
 
     [Space, Header("Weapon Audio Settings")]
-    public AudioClip gunShootSound = null;
-    public AudioClip gunReloadSound = null;
-    public AudioClip gunUnloadSound = null;
-    public AudioClip fireModeSwitchSound = null;
-    public AudioClip gunDryFireSound = null;
+    public AudioClip gunShootSound;
+    public AudioClip gunReloadSound;
+    public AudioClip gunUnloadSound;
+    public AudioClip fireModeSwitchSound;
+    public AudioClip gunDryFireSound;
 
     [Space, Header("Weapon Firemode Settings")]
     public bool single = true;
     public bool burst = false;
     public bool auto = false;
 
-    public GameObject firemodePanel = null;
+    public GameObject firemodePanel;
 
-    public TextMeshProUGUI firemodeText = null;
+    public TextMeshProUGUI firemodeText;
 
     [Space, Header("Weapon Effects")]
-    public GameObject bloodEffect = null;
-    public GameObject impactEffect = null;
-    public GameObject hitParticles = null;
+    public GameObject bloodEffect;
+    public GameObject impactEffect;
+    public GameObject hitParticles;
 
-    public ParticleSystem muzzleFlash = null;
+    public ParticleSystem muzzleFlash;
 
-    public Animator animator;
+    private Animator animator;
 
-    private AudioSource audioSource = null;
+    private AudioSource audioSource;
 
     private float nextTimeToFire = 0f;
 
@@ -66,16 +67,9 @@ public class WeaponBase : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
 
         currentAmmo = maxAmmo;
-    }
-
-    private void OnEnable()
-    {
-        //currentFireMode = FireModes.Single;
-
-        Debug.Log($"fireRate: {fireRate}");
-        Debug.Log($"fireMode: {currentFireMode}");
     }
 
     private void Update()
@@ -162,7 +156,7 @@ public class WeaponBase : MonoBehaviour
 
         audioSource.PlayOneShot(gunUnloadSound); // Play weapon unload magazine sound
 
-        yield return new WaitForSeconds(reloadTime - .25f);
+        yield return new WaitForSeconds(reloadWaitTime - .25f);
 
         animator.SetBool("isReloading", false);
 
@@ -192,21 +186,21 @@ public class WeaponBase : MonoBehaviour
 
         DisplayAmmoCount();
 
-        animator.SetBool("checkAmmo", true); // Start ammo check animation
+        animator.SetBool("checkAmmo", true);
 
-        audioSource.PlayOneShot(gunUnloadSound); // Play weapon unload magazine sound
+        audioSource.PlayOneShot(gunUnloadSound);
 
-        ammoPanel.SetActive(true); // Show UI
+        ammoPanel.SetActive(true);
 
-        yield return new WaitForSeconds(ammoCheckTime);
+        yield return new WaitForSeconds(ammoCheckWaitTime);
 
-        animator.SetBool("checkAmmo", false); // Stop ammo check animation
+        animator.SetBool("checkAmmo", false);
 
-        audioSource.PlayOneShot(gunReloadSound); // Play weapon reload sound
+        audioSource.PlayOneShot(gunReloadSound);
 
         yield return new WaitForSeconds(.25f);
 
-        ammoPanel.SetActive(false); // Hide UI
+        ammoPanel.SetActive(false);
 
         isCheckingAmmo = false;
     }
@@ -252,13 +246,13 @@ public class WeaponBase : MonoBehaviour
 
         changingFireMode = false;
 
-        firemodePanel.SetActive(true); // Show UI
+        firemodePanel.SetActive(true);
 
         audioSource.PlayOneShot(fireModeSwitchSound);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(firemodeWaitTime);
 
-        firemodePanel.SetActive(false); // Hide UI
+        firemodePanel.SetActive(false);
     }
 
     private void DisplayFireMode()
@@ -298,6 +292,8 @@ public class WeaponBase : MonoBehaviour
                             fireRate = 10;
 
                             firemodeText.text = "Burst";
+
+                            //animator.SetBool("", true);
 
                             return;
                         }

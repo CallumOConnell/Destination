@@ -563,7 +563,7 @@ Transform:
   m_Children:
   - {fileID: 2202083104106610236}
   m_Father: {fileID: 2202083106047326777}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -171.93701, z: 0}
 --- !u!1 &2202083106047326776
 GameObject:
@@ -596,8 +596,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.756, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2202083106020855362}
   - {fileID: 7805094623497424533}
+  - {fileID: 2202083106020855362}
   m_Father: {fileID: 2202083105496459514}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -920,9 +920,6 @@ MonoBehaviour:
   auto: 1
   firemodePanel: {fileID: 0}
   firemodeText: {fileID: 0}
-  aimDownSight: {fileID: 0}
-  hipfire: {fileID: 0}
-  aimDownSightsSpeed: 8
   bloodEffect: {fileID: 7822720084207870582, guid: fe4ffb959baee734c954e4127ae6d71b,
     type: 3}
   impactEffect: {fileID: 8274335704894588288, guid: 3f0f8f05e88ce344790bd524b3f9aee8,
@@ -1026,7 +1023,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 817e6c27825c352459f8925f541a35b4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 817e6c27825c352459f8925f541a35b4,
         type: 3}
