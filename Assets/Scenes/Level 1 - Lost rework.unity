@@ -25057,7 +25057,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18810
+  m_Name: pb_Mesh18800
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29638,7 +29638,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19408
+  m_Name: pb_Mesh19398
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -30363,7 +30363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266302342}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06400013, y: -0.57, z: -0.29000092}
+  m_LocalPosition: {x: 0.023, y: -0.638, z: 0}
   m_LocalScale: {x: 4.303307, y: 4.303307, z: 4.8412204}
   m_Children:
   - {fileID: 1794169824}
@@ -47925,7 +47925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794169823}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0003}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 426048430}
@@ -47967,7 +47967,7 @@ MonoBehaviour:
   auto: 1
   firemodePanel: {fileID: 72216543}
   firemodeText: {fileID: 781170704}
-  aimPos: {x: -0.0505, y: 0.0145, z: 0}
+  aimPos: {x: -0.041, y: 0.028, z: -0.0592}
   adsSpeed: 8
   bloodEffect: {fileID: 7822720084207870582, guid: fe4ffb959baee734c954e4127ae6d71b,
     type: 3}
@@ -48328,7 +48328,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19448
+  m_Name: pb_Mesh19438
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
