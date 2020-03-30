@@ -55,6 +55,7 @@ public class WeaponBase : MonoBehaviour
     public ParticleSystem muzzleFlash;
 
     private Animator animator;
+    private AnimatorClipInfo info;
 
     private AudioSource audioSource;
 
@@ -73,7 +74,7 @@ public class WeaponBase : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         currentAmmo = maxAmmo;
 
@@ -88,12 +89,7 @@ public class WeaponBase : MonoBehaviour
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate; // .25 seconds - The greater the firerate less time between shots
-            animator.SetBool("isFire", true);
             Shoot();
-        }
-        else
-        {
-            animator.SetBool("isFire", false);
         }
 
         if (Input.GetKeyDown(KeyCode.F)) // Manual Firemode Change
@@ -113,6 +109,16 @@ public class WeaponBase : MonoBehaviour
 
         AimDownSights();
 
+    }
+
+    private void FixedUpdate()
+    {
+
+        AnimatorStateInfo info = animator.GetCurrentAnimatorStateInfo(0);
+
+        if (info.IsName("HK416_Fire")) animator.SetBool("isFire", false);
+
+        animator.SetBool("isAiming", isAiming);
 
     }
 
@@ -128,6 +134,8 @@ public class WeaponBase : MonoBehaviour
         // Muzzle flash here
 
         audioSource.PlayOneShot(gunShootSound);
+
+        animator.CrossFadeInFixedTime("HK416_Fire", 0.1f);
 
         currentAmmo--;
 
