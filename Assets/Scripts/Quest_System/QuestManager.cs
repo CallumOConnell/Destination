@@ -65,8 +65,8 @@ namespace Destination
             quests.Add(quest);
             quests.Add(test);
 
-            quest.PrintPaths();
-            test.PrintPaths();
+            //quest.PrintPaths();
+            //test.PrintPaths();
         }
 
         private IEnumerator DisplayCompletion(string _questName)
