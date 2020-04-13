@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Destination
 {
@@ -8,7 +9,7 @@ namespace Destination
         public GameObject target;
         public GameObject player;
 
-        public RectTransform compassLine;
+        public RawImage compassLine;
 
         private RectTransform rect;
 
@@ -16,9 +17,11 @@ namespace Destination
 
         private void Update()
         {
+            compassLine.uvRect = new Rect(player.transform.localEulerAngles.y / 360, 0, 1, 1);
+
             Vector3[] v = new Vector3[4];
 
-            compassLine.GetLocalCorners(v);
+            compassLine.rectTransform.GetLocalCorners(v);
 
             float pointerScale = Vector3.Distance(v[1], v[2]); // Both bottom corners
 

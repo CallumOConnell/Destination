@@ -6,26 +6,31 @@ namespace Destination
 {
     public class QuestUI : MonoBehaviour
     {
+        [Space, Header("UI Settings")]
+
         public ListBoxControl availableQuests;
         public ListBoxControl questObjectives;
 
+        public TextMeshProUGUI questName;
+        public TextMeshProUGUI questDescription;
         public TextMeshProUGUI questType;
         public TextMeshProUGUI questStatus;
 
         public Sprite activeQuestIcon;
 
-        public GameObject manager;
         public GameObject questUI;
+        public GameObject manager;
+
+        public InputHandler inputHandler;
 
         private QuestManager questManager;
 
         private CompassController compassController;
 
-        private void Awake() => compassController = GetComponent<CompassController>();
-
         private void Start()
         {
             questManager = manager.GetComponent<QuestManager>();
+            compassController = GetComponent<CompassController>();
 
             availableQuests.OnChange += SelectQuest;
             availableQuests.OnDoubleClick += SetQuestActive;
@@ -38,13 +43,17 @@ namespace Destination
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     questUI.SetActive(false);
+
+                    inputHandler.LockControls();
                 }
             }
         }
 
         public void UpdateUI()
         {
-            List<Quest> quests = questManager.quests;
+            List<Quest> quests = CurrentQuests();
+
+            availableQuests.Clear();
 
             for (int i = 0; i < quests.Count; i++)
             {
@@ -54,11 +63,13 @@ namespace Destination
                 {
                     availableQuests.AddItem(i, quest.name, activeQuestIcon);
                 }
-                else
+                else if (quest.status == Quest.QuestStatus.WAITING)
                 {
                     availableQuests.AddItem(i, quest.name);
                 }
             }
+
+            SelectQuest(availableQuests.gameObject, 0);
         }
 
         public void SelectQuest(GameObject listBox, int indexSelected)
@@ -67,9 +78,16 @@ namespace Destination
 
             Quest selectedQuest = quests[indexSelected];
 
+            questName.text = selectedQuest.name;
+            questDescription.text = selectedQuest.description;
+
             if (selectedQuest.status == Quest.QuestStatus.ACTIVE)
             {
                 questStatus.gameObject.SetActive(true);
+            }
+            else
+            {
+                questStatus.gameObject.SetActive(false);
             }
 
             if (selectedQuest.status == Quest.QuestStatus.COMPLETED)
@@ -81,27 +99,59 @@ namespace Destination
                 questType.text = selectedQuest.type;
             }
 
+            questObjectives.Clear();
+
             List<QuestEvent> objectives = selectedQuest.questEvents;
+
+            /*
+             * TODO
+             * - Add functionality so that completed objectives aren't interactble and are somewhat greyed out
+             *
+            */
 
             for (int i = 0; i < objectives.Count; i++)
             {
                 QuestEvent objective = objectives[i];
 
-                questObjectives.AddItem(i, objective.name);
+                if (objective.status == QuestEvent.EventStatus.CURRENT)
+                {
+                    questObjectives.AddItem(i, objective.name);
+                }
+                else if (objective.status == QuestEvent.EventStatus.DONE)
+                {
+                    questObjectives.AddItem(i, objective.name);
+                }
             }
-
-            questObjectives.AddItem((objectives.Count + 1), selectedQuest.description);
         }
 
         public void SetQuestActive(GameObject listBox, int indexSelected)
         {
             List<Quest> quests = CurrentQuests();
 
+            foreach (Quest quest in quests)
+            {
+                if (quest.status == Quest.QuestStatus.ACTIVE)
+                {
+                    quest.UpdateQuestStatus(Quest.QuestStatus.WAITING); // Set current active quest to not active
+                }
+            }
+
             Quest selectedQuest = quests[indexSelected];
 
             QuestEvent currentObjective = selectedQuest.CurrentQuestEvent(selectedQuest);
 
             selectedQuest.UpdateQuestStatus(Quest.QuestStatus.ACTIVE);
+
+            if (currentObjective.order == 1)
+            {
+                currentObjective.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
+            }
+
+            UpdateUI();
+
+            SelectQuest(listBox, indexSelected);
+
+            questStatus.gameObject.SetActive(true);
 
             compassController.target = currentObjective.location;
         }

@@ -4,21 +4,25 @@ namespace Destination
 {
     public class ShutterDoor : InteractableBase
     {
-        public InventoryObject playerInventory = null;
+        [Space, Header("Inventory Settings")]
 
-        public AudioSource[] voiceLine = null;
+        public InventoryObject playerInventory;
 
-        public Crowbar crowbar = null;
+        public ItemObject crowbar;
 
-        private Animator animator = null;
+        [Space, Header("Audio Settings")]
+
+        public AudioSource[] voiceLine;
+
+        private Animator animator;
 
         private void Awake() => animator = GetComponent<Animator>();
 
         public override void OnInteract()
         {
             base.OnInteract();
-
-            if (crowbar.hasCrowbar)
+            
+            if (playerInventory.IsItemInInventory(crowbar))
             {
                 animator.SetBool("isOpen", true);
             }

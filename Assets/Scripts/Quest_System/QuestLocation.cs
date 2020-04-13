@@ -17,27 +17,23 @@ namespace Destination
 
         public QuestEvent questEvent;
 
-        //public QuestButton questButton;
-
         public void Setup(QuestManager _questManager, QuestEvent _questEvent)
         {
             questManager = _questManager;
             questEvent = _questEvent;
-            //questButton = _questButton;
-
-            //_questEvent.button = questButton;
         }
 
-        private void OnCollisionEnter(Collision _other)
+        private void OnTriggerEnter(Collider _other)
         {
+            Debug.Log("A");
             if (!_other.gameObject.CompareTag("Player")) return;
-
+            Debug.Log("B");
             // If we shouldn't be working on this event then don't register it as completed.
+            Debug.Log($"{questEvent.status}");
             if (questEvent.status != QuestEvent.EventStatus.CURRENT) return;
 
             // Inject these back into the Quest Manager to update states.
             questEvent.UpdateQuestEvent(QuestEvent.EventStatus.DONE);
-            //questButton.UpdateButton(QuestEvent.EventStatus.DONE);
             questManager.UpdateQuestsOnCompletion(questEvent);
         }
     }

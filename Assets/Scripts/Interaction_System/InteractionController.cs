@@ -14,12 +14,12 @@ namespace Destination
         [SerializeField] private LayerMask interactableLayer = ~0;
 
         [Space, Header("UI Settings")]
-        [SerializeField] private Canvas canvas = null;
+        public Canvas canvas;
 
         [Space, Header("Camera Settings")]
-        public Camera mainCamera = null;
+        public Camera mainCamera;
 
-        private InteractionUI interactionUI = null;
+        private InteractionUI interactionUI;
 
         private bool interacting;
 
@@ -45,6 +45,7 @@ namespace Destination
             {
                 InteractableBase interactable = hitInfo.transform.GetComponent<InteractableBase>();
 
+                interactionUI.SetToolTip(interactable.ToolTip);
                 interactionUI.SetTooltipActiveState(true);
 
                 if (interactable != null)

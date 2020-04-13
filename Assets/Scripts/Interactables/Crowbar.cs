@@ -4,24 +4,21 @@ namespace Destination
 {
     public class Crowbar : InteractableBase
     {
-        public InventoryObject playerInventory = null;
+        [Space, Header("Audio Settings")]
+        public InventoryObject inventory;
 
-        public AudioSource[] voiceLine = null;
+        public ItemObject crowbar;
 
-        public bool hasCrowbar = false;
+        [Space, Header("Audio Settings")]
+        public AudioSource[] voiceLine;
 
         public override void OnInteract()
         {
             base.OnInteract();
 
-            if (Item != null)
-            {
-                playerInventory.AddItem(Item, 1);
-            }
+            inventory.AddItem(new Item(crowbar), 1);
 
             voiceLine[0].Play();
-
-            hasCrowbar = true;
 
             gameObject.SetActive(false);
         }

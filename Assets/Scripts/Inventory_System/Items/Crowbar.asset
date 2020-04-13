@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a128ab75cc6b5614ab215f0fd56eb203, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a3993bbc59190b49928575c94e0a2bf, type: 3}
   m_Name: Crowbar
   m_EditorClassIdentifier: 
-  prefab: {fileID: -927199367670048503, guid: 9f649a51b430af44ca709e6fbf446d25, type: 3}
-  type: 2
-  description: A crowbar can be used to pry open locked doors.
+  icon: {fileID: 21300000, guid: 7562195dd1a5ca4489f89810d8bd4b3e, type: 3}
+  stackable: 0
+  type: 1
+  description: This is a crowbar that can be used to pry open locked doors.
+  data:
+    name: Crowbar
+    id: 0

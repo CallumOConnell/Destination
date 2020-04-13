@@ -8,6 +8,8 @@ namespace Destination
     {
         public GameObject mainMenu;
         public GameObject settingsMenu;
+        
+        //public GameManager gameManager;
 
         public AudioMixer audioMixer;
 
@@ -20,9 +22,7 @@ namespace Destination
 
         public void LoadGame()
         {
-            SceneManager.LoadScene("Level 1 - Lost");
-
-            CloseMenu();
+            GameManager.instance.LoadGame();
         }
 
         public void OpenSettings()

@@ -4,11 +4,12 @@ namespace Destination
 {
     public class Safe : InteractableBase
     {
-        public bool isUnlocked = false;
+        [Space, Header("UI Settings")]
+        public GameObject safeMenu;
 
-        public GameObject safeCodeUI = null;
+        public InputHandler inputHandler;
 
-        private Animator animator = null;
+        private Animator animator;
 
         private void Start() => animator = GetComponent<Animator>();
 
@@ -16,9 +17,11 @@ namespace Destination
         {
             base.OnInteract();
 
-            safeCodeUI.SetActive(true);
+            inputHandler.UnlockControls();
+
+            safeMenu.SetActive(true);
         }
 
-        public void OpenSafe() => animator.SetBool("Safe Open", true);
+        public void OpenSafe() => animator.SetBool("isOpen", true);
     }
 }

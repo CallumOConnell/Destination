@@ -25,7 +25,7 @@ using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(RectTransform))]
 [RequireComponent(typeof(Image))]
-public	partial	class	ListBoxLineItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
+public	class	ListBoxLineItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
 {
 
 	#region "PRIVATE CONSTANTS"
@@ -65,7 +65,6 @@ public	partial	class	ListBoxLineItem : MonoBehaviour, IPointerEnterHandler, IPoi
 		private bool							_blnSelected		= false;
 		private bool							_blnEnabled			= true;
 		private bool							_blnShown				= true;
-		//private bool							_blnInitialized	= false;
 
 	#endregion
 
@@ -481,10 +480,9 @@ public	partial	class	ListBoxLineItem : MonoBehaviour, IPointerEnterHandler, IPoi
 		public	void							Destroy()
 		{
 		if (Application.isPlaying)
-
-			Destroy(this.gameObject, 0.01f);
+			Destroy(gameObject, 0.01f);
 			else
-				DestroyImmediate(this.gameObject);
+			DestroyImmediate(this.gameObject);
 		}
 		public	void							Select()
 		{

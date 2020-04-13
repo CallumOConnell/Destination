@@ -10,7 +10,7 @@ namespace Destination
         public float sprintSpeed = 12f;
         public float groundDistance = 0.4f;
 
-        public Transform groundCheck = null;
+        public Transform groundCheck;
         
         public LayerMask groundMask = ~0;
 
@@ -21,9 +21,9 @@ namespace Destination
         private bool isGrounded;
         private bool isCrouched = false;
 
-        private CharacterController controller = null;
+        private CharacterController controller;
 
-        private AudioSource audioSource = null;
+        private AudioSource audioSource;
 
         private void Start()
         {

@@ -11,7 +11,7 @@ namespace Destination
 
         [SerializeField] private bool isInteractable = true;
 
-        [SerializeField] private ItemObject item = null;
+        [SerializeField] private string tooltip = "";
 
         public float HoldDuration => holdDuration;
 
@@ -19,7 +19,7 @@ namespace Destination
 
         public bool IsInteractable => isInteractable;
 
-        public ItemObject Item => item;
+        public string ToolTip => tooltip;
 
         public virtual void OnInteract()
         {

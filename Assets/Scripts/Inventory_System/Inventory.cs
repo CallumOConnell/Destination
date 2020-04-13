@@ -1,52 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Linq;
 
 namespace Destination
 {
-    public class Inventory : MonoBehaviour
+    [Serializable]
+    public class Inventory
     {
-        [Space, Header("Inventory Settings")]
-        public InventoryObject playerInventory = null;
+        public InventorySlot[] slots = new InventorySlot[24];
 
-        [Space, Header("Inventory UI Settings")]
-        public GameObject inventoryPanel = null;
-        public GameObject slotHolder = null;
-
-        private bool inventoryEnable = false;
-
-        private int allSlots;
-        private int enabledSlots;
-
-        private GameObject[] slot;
-
-        private void Start()
+        public void Clear()
         {
-            allSlots = 36;
-            slot = new GameObject[allSlots];
-
-            for (int i = 0; i < allSlots; i++)
+            for (int i = 0; i < slots.Length; i++)
             {
-                slot[i] = slotHolder.transform.GetChild(i).gameObject;
+                slots[i].item = new Item();
+                slots[i].amount = 0;
             }
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                inventoryEnable = !inventoryEnable;
-            }
+        public bool ContainsItem(ItemObject itemObject) => Array.Find(slots, i => i.item.id == itemObject.data.id) != null;
 
-            if (inventoryEnable)
-            {
-                inventoryPanel.SetActive(true);
-            }
-            else
-            {
-                inventoryPanel.SetActive(false);
-            }
-        }
-
-        // Wipes players inventory after you stop playing the game. If you want a persistant inventory you would remove this method.
-        private void OnApplicationQuit() => playerInventory.container.Clear();
+        public bool ContainsItem(int id) => slots.FirstOrDefault(i => i.item.id == id) != null;
     }
 }

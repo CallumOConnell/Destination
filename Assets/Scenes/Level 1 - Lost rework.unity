@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.048036736, g: 0.034002155, b: 0.03137993, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13549,6 +13549,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 365045500}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &376981276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 376981277}
+  m_Layer: 0
+  m_Name: --- Temp Effects ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &376981277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376981276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 592.3824, y: 285.1907, z: -227.41148}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &381415145
 GameObject:
   m_ObjectHideFlags: 0
@@ -47911,7 +47941,7 @@ GameObject:
   - component: {fileID: 1794169827}
   - component: {fileID: 1794169826}
   m_Layer: 0
-  m_Name: HK416 Script holder
+  m_Name: HK416 Script Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47947,12 +47977,11 @@ MonoBehaviour:
   damage: 20
   range: 250
   impactForce: 30
-  fireRate: 10
+  fireRate: 0.2
   reloadWaitTime: 1
   ammoCheckWaitTime: 3
   firemodeWaitTime: 2
   mainCamera: {fileID: 4009520956274015031}
-  impactParent: {fileID: 0}
   maxAmmo: 30
   spareAmmo: 90
   ammoPanel: {fileID: 1074667926}
@@ -47962,9 +47991,10 @@ MonoBehaviour:
   gunUnloadSound: {fileID: 8300000, guid: 7a31e912a316cac439ddac9c784d6307, type: 3}
   fireModeSwitchSound: {fileID: 8300000, guid: aa5d12699031c2e489ad33763e8afcb9, type: 3}
   gunDryFireSound: {fileID: 8300000, guid: 911721f9524bee84696c2a2dc5b0fbe0, type: 3}
-  single: 1
-  burst: 0
-  auto: 1
+  isSingle: 1
+  isBurst: 1
+  isAutomatic: 1
+  burstAmount: 3
   firemodePanel: {fileID: 72216543}
   firemodeText: {fileID: 781170704}
   aimPos: {x: -0.041, y: 0.028, z: -0.0592}
@@ -47975,6 +48005,7 @@ MonoBehaviour:
     type: 3}
   hitParticles: {fileID: 1617700753897852, guid: c8467cb6fd485d34a9fbe85ffdb46cc1,
     type: 3}
+  tempEffects: {fileID: 376981277}
   muzzleFlash: {fileID: 0}
 --- !u!95 &1794169826
 Animator:

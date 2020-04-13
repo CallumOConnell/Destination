@@ -2,26 +2,29 @@
 
 namespace Destination
 {
-    public enum ItemType
+    [CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Item")]
+    public class ItemObject : ScriptableObject
     {
-        Equipment,
-        Health,
-        Default
-    }
-
-    public abstract class ItemObject : ScriptableObject
-    {
-        public int id;
-
-        public GameObject prefab;
-
         public Sprite icon;
+
+        public bool stackable;
 
         public ItemType type;
 
-        [TextArea(15, 20)]
-        public string description;
+        [TextArea(15, 20)] public string description;
 
-        public virtual void Use() { }
+        public Item data = new Item();
+
+        public Item CreateItem()
+        {
+            Item newItem = new Item(this);
+
+            return newItem;
+        }
+
+        public virtual void Use()
+        {
+            Debug.Log($"Used: {name}");
+        }
     }
 }

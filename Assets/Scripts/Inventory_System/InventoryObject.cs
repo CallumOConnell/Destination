@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 namespace Destination
@@ -6,95 +8,173 @@ namespace Destination
     [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
     public class InventoryObject : ScriptableObject
     {
-        public List<InventorySlot> container = new List<InventorySlot>();
+        // Fields
+        public string savePath;
 
-        public void AddItem(ItemObject _item, int _amount)
+        public ItemDatabaseObject database;
+
+        [SerializeField]
+        private Inventory container = new Inventory();
+
+        // Properties
+        public InventorySlot[] GetSlots => container.slots;
+
+        public int EmptySlotCount
         {
-            bool hasItem = HasItem(_item);
-
-            if (!hasItem)
+            get
             {
-                container.Add(new InventorySlot(_item, _amount));
-            }
-        }
+                int counter = 0;
 
-        public void RemoveItem(ItemObject _item, int _amount)
-        {
-            bool hasItem = HasItem(_item);
-
-            if (hasItem)
-            {
-                InventorySlot slot = FindInventorySlot(container, _item);
-
-                if (slot != null)
+                for (int i = 0; i < GetSlots.Length; i++)
                 {
-                    int currentAmount = slot.amount;
-
-                    if (currentAmount - _amount > 0)
+                    if (GetSlots[i].item.id <= -1)
                     {
-                        slot.SetAmount(_amount);
+                        counter++;
                     }
-                    else
-                    {
-                        container.Remove(slot);
-                    }     
+                }
+
+                return counter;
+            }
+        }
+
+        // Methods
+        public bool AddItem(Item item, int amount)
+        {
+            if (EmptySlotCount <= 0) return false;
+
+            InventorySlot slot = FindItemOnInventory(item);
+
+            if (!database.itemObjects[item.id].stackable || slot == null)
+            {
+                GetEmptySlot().UpdateSlot(item, amount);
+                return true;
+            }
+
+            slot.AddAmount(amount);
+
+            return true;
+        }
+
+        public void RemoveItem(InventorySlot slot, Item _item, int _amount)
+        {
+            if (slot != null)
+            {
+                int currentAmount = slot.amount;
+                int newAmount = currentAmount - _amount;
+
+                if (newAmount > 0)
+                {
+                    slot.UpdateSlot(_item, newAmount);
+                }
+                else
+                {
+                    slot.RemoveItem();
                 }
             }
         }
 
-        public bool HasItem(int _itemID)
+        public void RemoveItem(Item _item, int _amount)
         {
-            for (int i = 0; i < container.Count; i++)
-            {
-                if (container[i].item.id == _itemID)
-                {
-                    return true;
-                }
-            }
+            InventorySlot slot = FindItemOnInventory(_item);
 
-            return false;
+            int currentAmount = slot.amount;
+            int newAmount = currentAmount - _amount;
+
+            if (newAmount > 0)
+            {
+                slot.UpdateSlot(_item, newAmount);
+            }
+            else
+            {
+                slot.RemoveItem();
+            }
         }
 
-        public bool HasItem(ItemObject _item)
+        public InventorySlot FindItemOnInventory(Item item)
         {
-            for (int i = 0; i < container.Count; i++)
+            for (int i = 0; i < GetSlots.Length; i++)
             {
-                if (container[i].item == _item)
+                if (GetSlots[i].item.id == item.id)
                 {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private InventorySlot FindInventorySlot(List<InventorySlot> _inventory, ItemObject _item)
-        {
-            foreach (InventorySlot slot in _inventory)
-            {
-                if (slot.item == _item)
-                {
-                    return slot;
+                    return GetSlots[i];
                 }
             }
 
             return null;
         }
-    }
 
-    [System.Serializable]
-    public class InventorySlot
-    {
-        public ItemObject item;
-
-        public int amount;
-
-        public InventorySlot(ItemObject _item, int _amount)
+        public bool IsItemInInventory(ItemObject item)
         {
-            item = _item;
-            amount = _amount;
+            for (int i = 0; i < GetSlots.Length; i++)
+            {
+                if (GetSlots[i].item.id == item.data.id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
-        public void SetAmount(int _value) => amount = _value;
+        public InventorySlot GetEmptySlot()
+        {
+            for (int i = 0; i < GetSlots.Length; i++)
+            {
+                if (GetSlots[i].item.id <= -1)
+                {
+                    return GetSlots[i];
+                }
+            }
+
+            return null;
+        }
+
+        public void SwapItems(InventorySlot item1, InventorySlot item2)
+        {
+            if (item1 == item2) return;
+
+            if (item2.CanPlaceInSlot(item1.GetItemObject()) && item1.CanPlaceInSlot(item2.GetItemObject()))
+            {
+                InventorySlot temp = new InventorySlot(item2.item, item2.amount);
+
+                item2.UpdateSlot(item1.item, item1.amount);
+                item1.UpdateSlot(temp.item, temp.amount);
+            }
+        }
+
+        [ContextMenu("Save")]
+        public void Save()
+        {
+            IFormatter formatter = new BinaryFormatter();
+
+            Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create, FileAccess.Write);
+
+            formatter.Serialize(stream, container);
+
+            stream.Close();
+        }
+
+        [ContextMenu("Load")]
+        public void Load()
+        {
+            if (File.Exists(string.Concat(Application.persistentDataPath, savePath)))
+            {
+                IFormatter formatter = new BinaryFormatter();
+
+                Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
+
+                Inventory newContainer = (Inventory)formatter.Deserialize(stream);
+
+                for (int i = 0; i < GetSlots.Length; i++)
+                {
+                    GetSlots[i].UpdateSlot(newContainer.slots[i].item, newContainer.slots[i].amount);
+                }
+
+                stream.Close();
+            }
+        }
+
+        [ContextMenu("Clear")]
+        public void Clear() => container.Clear();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Destination
@@ -21,8 +22,6 @@ namespace Destination
 
         public EventStatus status;
 
-        public QuestButton button;
-
         public GameObject location;
 
         public List<QuestPath> pathList = new List<QuestPath>();
@@ -31,7 +30,7 @@ namespace Destination
 
         public QuestEvent(string _name, string _description, GameObject _location, Quest _quest)
         {
-            id = "1";
+            id = Guid.NewGuid().ToString();
             name = _name;
             description = _description;
             status = EventStatus.WAITING;
@@ -39,11 +38,7 @@ namespace Destination
             quest = _quest;
         }
 
-        public void UpdateQuestEvent(EventStatus _newStatus)
-        {
-            status = _newStatus;
-            button.UpdateButton(_newStatus);
-        } 
+        public void UpdateQuestEvent(EventStatus _newStatus) => status = _newStatus;
 
         public string GetID() => id;
     }

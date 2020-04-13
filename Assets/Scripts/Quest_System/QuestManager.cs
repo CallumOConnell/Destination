@@ -7,7 +7,6 @@ namespace Destination
 {
     public class QuestManager : MonoBehaviour
     {
-        [HideInInspector]
         public List<Quest> quests = new List<Quest>();
 
         [Space, Header("UI Settings")]
@@ -25,7 +24,7 @@ namespace Destination
         {
             // Define quest basic details
             Quest quest = new Quest("Test Quest", "First quest to complete.", "Storyline Quest");
-
+            Quest test = new Quest("Test Quest 2", "This is a second quest for testing out the quest system where the player to retrieve two blocks located around the testing area.", "Side Quest");
             
             // Define quest objectives
             // Create each event within the quest
@@ -35,6 +34,9 @@ namespace Destination
             QuestEvent d = quest.AddQuestEvent("test4", "description 4", dLocation, quest);
             QuestEvent e = quest.AddQuestEvent("test5", "description 5", eLocation, quest);
 
+            QuestEvent test1 = test.AddQuestEvent("Go to quest target block a", "description 6", aLocation, test);
+            QuestEvent test2 = test.AddQuestEvent("Go to quest target block b", "description 7", bLocation, test);
+
             // Define the paths between the events - e.g. the order they must be completed in
             quest.AddPath(a.GetID(), b.GetID());
             quest.AddPath(b.GetID(), c.GetID());
@@ -43,7 +45,9 @@ namespace Destination
 
             quest.BFS(a.GetID());
 
-            //QuestButton button = CreateButton(a).GetComponent<QuestButton>();
+            test.AddPath(test1.GetID(), test2.GetID());
+
+            test.BFS(test1.GetID());
 
             aLocation.GetComponent<QuestLocation>().Setup(this, a);
             bLocation.GetComponent<QuestLocation>().Setup(this, b);
@@ -51,30 +55,24 @@ namespace Destination
             dLocation.GetComponent<QuestLocation>().Setup(this, d);
             eLocation.GetComponent<QuestLocation>().Setup(this, e);
 
+            aLocation.GetComponent<QuestLocation>().Setup(this, test1);
+            bLocation.GetComponent<QuestLocation>().Setup(this, test2);
+
+            quest.SetFinalEvent(e);
+            test.SetFinalEvent(test2);
+
             // Add all quests to list
             quests.Add(quest);
+            quests.Add(test);
 
-            // Debug
-            //quest.PrintPath();
+            quest.PrintPaths();
+            test.PrintPaths();
         }
-        /*
-        private GameObject CreateButton(QuestEvent _event)
+
+        private IEnumerator DisplayCompletion(string _questName)
         {
-            GameObject button = Instantiate(buttonPrefab);
+            questCompletedText.text = $"{_questName} Completed!";
 
-            button.GetComponent<QuestButton>().Setup(_event, questPrintBox);
-
-            if (_event.order == 1)
-            {
-                button.GetComponent<QuestButton>().UpdateButton(QuestEvent.EventStatus.CURRENT);
-                _event.status = QuestEvent.EventStatus.CURRENT;
-            }
-
-            return button;
-        }
-        */
-        private IEnumerator DisplayCompletion()
-        {
             questCompletedText.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(2f);
@@ -86,7 +84,13 @@ namespace Destination
         {
             if (_event == _event.quest.finalEvent)
             {
-                StartCoroutine(DisplayCompletion());
+                Debug.Log($"Quest Completed Status: {_event.quest.status}");
+
+                _event.quest.UpdateQuestStatus(Quest.QuestStatus.COMPLETED);
+
+                Debug.Log($"Quest Completed Status: {_event.quest.status}");
+
+                StartCoroutine(DisplayCompletion(_event.quest.name));
 
                 return;
             }

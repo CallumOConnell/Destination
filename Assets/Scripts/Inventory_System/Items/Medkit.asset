@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0452ef3b4ac7e6d449db5f1434ed5f5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a3993bbc59190b49928575c94e0a2bf, type: 3}
   m_Name: Medkit
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  type: 1
-  description: Allows player to heal them selves.
-  restoreHealthValue: 50
+  icon: {fileID: 21300000, guid: d06437024d56f014aa9956ef04703d9e, type: 3}
+  stackable: 1
+  type: 0
+  description: The medkit can be used to heal the player.
+  data:
+    name: Medkit
+    id: 1

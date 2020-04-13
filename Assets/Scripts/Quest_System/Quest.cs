@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Destination
@@ -26,7 +27,7 @@ namespace Destination
 
         public Quest(string _name, string _description, string _type)
         {
-            id = "1";
+            id = Guid.NewGuid().ToString();
             name = _name;
             description = _description;
             type = _type;
@@ -35,12 +36,7 @@ namespace Destination
 
         public void SetFinalEvent(QuestEvent _finalEvent) => finalEvent = _finalEvent;
 
-        public void UpdateQuestStatus(QuestStatus _newStatus)
-        {
-            status = _newStatus;
-
-            // Update UI if open
-        }
+        public void UpdateQuestStatus(QuestStatus _newStatus) => status = _newStatus;
 
         public QuestEvent CurrentQuestEvent(Quest _quest)
         {
@@ -55,7 +51,7 @@ namespace Destination
             return null;
         }
 
-        public bool QuestCompleted(Quest _quest)
+        public bool IsQuestCompleted(Quest _quest)
         {
             foreach (QuestEvent questEvent in _quest.questEvents)
             {
@@ -107,22 +103,34 @@ namespace Destination
         {
             QuestEvent thisEvent = FindQuestEvent(_id);
 
-            thisEvent.order = _orderNumber;
-
-            foreach (QuestPath e in thisEvent.pathList)
+            if (thisEvent != null)
             {
-                if (e.endEvent.order == -1)
+                thisEvent.order = _orderNumber;
+
+                if (thisEvent.order == 1)
                 {
-                    BFS(e.endEvent.GetID(), _orderNumber + 1);
+                    thisEvent.UpdateQuestEvent(QuestEvent.EventStatus.CURRENT);
                 }
+
+                foreach (QuestPath e in thisEvent.pathList)
+                {
+                    if (e.endEvent.order == -1)
+                    {
+                        BFS(e.endEvent.GetID(), _orderNumber + 1);
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError($"Couldn't find quest event with id of {_id}");
             }
         }
 
-        public void PrintPath()
+        public void PrintPaths()
         {
-            foreach (QuestEvent questEvent in questEvents)
+            foreach (QuestEvent _event in questEvents)
             {
-                Debug.Log($"{questEvent.name} : {questEvent.order}");
+                Debug.Log($"Name: {_event.name} Order: {_event.order} Status: {_event.status}");
             }
         }
     }

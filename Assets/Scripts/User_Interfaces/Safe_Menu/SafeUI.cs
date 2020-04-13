@@ -6,16 +6,24 @@ namespace Destination
 {
     public class SafeUI : MonoBehaviour
     {
+        [Space, Header("UI Settings")]
+
         public TMP_InputField inputText;
 
-        public GameObject safeObject;
-        public GameObject safeCodeUI;
+        [Space, Header("Audio Settings")]
 
         public AudioSource audioSource;
 
         public AudioClip errorSound;
 
+        [Space, Header("Safe Settings")]
+
         public string correctCode = "1234";
+
+        public GameObject safeObject;
+        public GameObject safeMenu;
+
+        public InputHandler inputHandler;
 
         private Safe safe;
 
@@ -27,16 +35,16 @@ namespace Destination
 
             ResetInput();
 
-            PushButton.ButtonPressed += AddDigitToCodeSequence;
+            ButtonHandler.ButtonPressed += AddDigitToCodeSequence;
         }
 
         private void Update()
         {
-            if (safeCodeUI.activeSelf)
+            if (safeMenu.activeSelf)
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    safeCodeUI.SetActive(false);
+                    CloseMenu();
                 }
             }
         }
@@ -131,20 +139,31 @@ namespace Destination
 
         private IEnumerator CheckCode()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
 
             if (code == correctCode)
             {
-                safeCodeUI.SetActive(false);
+                CloseMenu();
+
                 safe.OpenSafe();
+
+                safe.gameObject.layer = 0;
             }
             else
             {
                 audioSource.PlayOneShot(errorSound);
+
                 ResetInput();
             }
         }
 
-        private void OnDestroy() => PushButton.ButtonPressed -= AddDigitToCodeSequence; // Removes event handler when button no longer exists avoids null ref errors
+        private void CloseMenu()
+        {
+            safeMenu.SetActive(false);
+
+            inputHandler.LockControls();
+        }
+
+        private void OnDestroy() => ButtonHandler.ButtonPressed -= AddDigitToCodeSequence; // Removes event handler when button no longer exists avoids null ref errors
     }
 }
