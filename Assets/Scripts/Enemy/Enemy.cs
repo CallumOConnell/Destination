@@ -67,9 +67,20 @@ public class Enemy : MonoBehaviour
             animator.SetTrigger("isRunHit");
         }
 
+        StartCoroutine(SlowDown());
+
         health -= amount;
 
         if (health <= 0) StartCoroutine(Die());
+    }
+
+    private IEnumerator SlowDown()
+    {
+        enemyAgent.speed = 0f;
+
+        yield return new WaitForSeconds(2.5f);
+
+        enemyAgent.speed = 4f;
     }
 
     private IEnumerator Die()
