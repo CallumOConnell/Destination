@@ -5694,9 +5694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78073d778e8950b44bf0b96187edf4d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
   hearingRadius: 10
-  smoothTime: 5
 --- !u!82 &924467713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5840,7 +5839,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -6881,7 +6880,7 @@ Transform:
   m_GameObject: {fileID: 1016901433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 27.041306, y: -25.277382, z: 15.05442}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalScale: {x: 4.7508, y: 1, z: 3.7252}
   m_Children: []
   m_Father: {fileID: 1935999286}
   m_RootOrder: 0
@@ -15805,11 +15804,6 @@ PrefabInstance:
       propertyPath: inputHandler
       value: 
       objectReference: {fileID: 1459024441}
-    - target: {fileID: 2966729736396503738, guid: 25b39f7f1b1f63242b5cde7675257681,
-        type: 3}
-      propertyPath: damage
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4009520954420564912, guid: 25b39f7f1b1f63242b5cde7675257681,
         type: 3}
       propertyPath: m_Name
