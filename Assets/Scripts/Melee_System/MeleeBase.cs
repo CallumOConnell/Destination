@@ -41,9 +41,9 @@ namespace Destination
 
         private void Attack()
         {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("isAttack");
 
-            audioSource.PlayOneShot(attackCries[Random.Range(0, attackCries.Length)]);
+            //audioSource.PlayOneShot(attackCries[Random.Range(0, attackCries.Length)]);
 
             Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 

@@ -89,7 +89,7 @@ namespace Destination
 
         private void Attack()
         {
-            animator.SetTrigger("ZombieAttack");
+            animator.SetTrigger("Attack");
 
             target.gameObject.GetComponent<PlayerStats>().TakeDamage(damageGiven);
         }
