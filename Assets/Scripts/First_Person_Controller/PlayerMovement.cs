@@ -4,10 +4,11 @@ namespace Destination
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public float speed = 6f;
+        public float speed = 2f;
         public float gravity = -9.81f;
         public float jumpHeight = 3f;
-        public float sprintSpeed = 12f;
+        public float sprintSpeed = 3f;
+        public float sprintSpeedNormal = 3f;
         public float groundDistance = 0.4f;
 
         public Transform groundCheck;
@@ -24,7 +25,6 @@ namespace Destination
         private CharacterController controller;
 
         private AudioSource audioSource;
-
 
         private void Start()
         {
@@ -61,7 +61,7 @@ namespace Destination
 
             // Sprinting
 
-            if (Input.GetButtonDown("Sprint") && isGrounded && !isCrouched)
+            if (Input.GetButton("Sprint") && isGrounded && !isCrouched)
             {
                 controller.Move(move * sprintSpeed * Time.deltaTime);
                 //anim.SetBool("isRunning", true);
@@ -77,13 +77,13 @@ namespace Destination
             {
                 isCrouched = true;
                 controller.height = 1;
-                speed = 3;
+                speed = 1;
             }
             else
             {
                 isCrouched = false;
                 controller.height = startHeight;
-                speed = 6;
+                speed = 2;
             }
 
             // Jumping

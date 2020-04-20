@@ -4,9 +4,6 @@ namespace Destination
 {
     public class MeleeBase : MonoBehaviour
     {
-        [Space, Header("Animator Settings")]
-        public Animator animator;
-
         [Space, Header("Audio Settings")]
         public AudioSource audioSource;
 
@@ -22,38 +19,53 @@ namespace Destination
 
         public LayerMask enemyLayer;
 
+        public SwitchWeapon switchWeapon;
+
         private float nextAttackTime = 0f;
+
+        private Animator animator;
+
+        private void Awake() => animator = GetComponent<Animator>();
 
         private void Update()
         {
-            // Check player has crowbar as current weapon
-
-            if (Time.time >= nextAttackTime)
+            if (switchWeapon.currentWeapon == "Crowbar")
             {
-                if (Input.GetButtonDown("Attack"))
+                if (Time.time >= nextAttackTime)
                 {
-                    Attack();
+                    animator.SetBool("isAttack", false);
 
-                    nextAttackTime = Time.time + 1F / attachRate;
+                    if (Input.GetButtonDown("Attack"))
+                    {
+                        Attack();
+
+                        nextAttackTime = Time.time + 1f / attachRate;
+                    }
                 }
             }
         }
 
         private void Attack()
         {
-            animator.SetTrigger("isAttack");
+            animator.SetBool("isAttack", true);
 
-            //audioSource.PlayOneShot(attackCries[Random.Range(0, attackCries.Length)]);
+            audioSource.PlayOneShot(attackCries[Random.Range(0, attackCries.Length)]);
 
             Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
-            foreach (Collider enemy in hitEnemies)
+            if (hitEnemies.Length > 0)
             {
-                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+                foreach (Collider enemy in hitEnemies)
+                {
+                    if (enemy != null)
+                    {
+                        enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+                    }
+                }
             }
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmosSelected() // Debug for testing attack range
         {
             if (attackPoint == null) return;
 

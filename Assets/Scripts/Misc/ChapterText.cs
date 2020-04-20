@@ -5,15 +5,17 @@ namespace Destination
 {
     public class ChapterText : MonoBehaviour
     {
-        public GameObject text = null;
+        public GameObject text;
 
-        public Animator animator = null;
+        public Animator animator;
 
-        public AudioSource[] voiceLine = null;
+        public AudioSource audioSource;
 
-        private BoxCollider boxCollider = null;
+        public AudioClip voiceLine;
 
-        private bool alreadyPlayed = false;
+        public bool alreadyPlayed = false;
+
+        private BoxCollider boxCollider;
 
         private void Start() => boxCollider = GetComponent<BoxCollider>();
 
@@ -29,22 +31,22 @@ namespace Destination
         {
             if (!alreadyPlayed)
             {
-                voiceLine[0].Play();
+                audioSource.PlayOneShot(voiceLine);
 
                 alreadyPlayed = true;
+
+                text.SetActive(true);
+
+                yield return new WaitForSeconds(5f);
+
+                animator.SetTrigger("fadeOut");
+
+                yield return new WaitForSeconds(2f);
+
+                text.SetActive(false);
+
+                boxCollider.enabled = false;
             }
-
-            text.SetActive(true);
-
-            yield return new WaitForSeconds(5f);
-
-            animator.SetTrigger("fadeOut");
-
-            yield return new WaitForSeconds(2f);
-
-            text.SetActive(false);
-
-            boxCollider.enabled = false;
         }
     }
 }

@@ -18,9 +18,15 @@ namespace Destination
 
         public RespawnEnemies enemyManager;
 
+        public QuestManager questManager;
+
         public WeaponBase weapon;
 
         public GameObject respawnPanel;
+
+        public ChapterText chapterText;
+
+        public AudioManager audioManager;
 
         private void Start() => currentHealth = maxHealth;
 
@@ -29,22 +35,14 @@ namespace Destination
             // Create blood screen effect system depending on players current health
 
             currentHealth -= _amount;
+
+            if (currentHealth <= 0) Respawn();
         }
 
         private void Update()
         {
             // Debug
             if (Input.GetKeyDown(KeyCode.P)) currentHealth -= 10;
-
-            /*
-                Might be worth adding this to a function where the player takes damage then check if they are dead after deducting the damage.
-
-                Don't quote me on this but changing active status on a game object the script is attached to can cause problems I think I had
-                trouble with it on my college game but idk till further testing.
-
-
-            */
-            if (currentHealth <= 0) Respawn();
         }
 
         private void OnTriggerEnter(Collider other) // Temp for testing inventory system
@@ -82,6 +80,13 @@ namespace Destination
             enemyManager.SpawnEnemies();
 
             // Reset quests
+            questManager.SetupQuests();
+
+            // Reset chapter text
+            chapterText.alreadyPlayed = false;
+
+            // Reset voice trigger
+            audioManager.ResetTriggers();
         }
     }
 }

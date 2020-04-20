@@ -2,23 +2,11 @@
 
 namespace Destination
 {
-    public class VoiceTrigger : MonoBehaviour
+    [CreateAssetMenu(fileName = "New Audio Trigger", menuName = "Audio Trigger System/Audio Trigger")]
+    public class VoiceTrigger : ScriptableObject
     {
-        public AudioSource[] voiceLine = null;
+        public AudioClip voiceLine;
 
-        private bool alreadyPlayed = false;
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                if (!alreadyPlayed)
-                {
-                    voiceLine[0].Play();
-
-                    alreadyPlayed = true;
-                }
-            }
-        }
+        public bool alreadyPlayed = false;
     }
 }

@@ -21,12 +21,14 @@ namespace Destination
         public GameObject dLocation;
         public GameObject eLocation;
 
-        private void Start()
+        private void Start() => SetupQuests();
+
+        public void SetupQuests()
         {
             // Define quest basic details
             Quest quest = new Quest("Test Quest", "First quest to complete.", "Storyline Quest");
             Quest test = new Quest("Test Quest 2", "This is a second quest for testing out the quest system where the player to retrieve two blocks located around the testing area.", "Side Quest");
-            
+
             // Define quest objectives
             // Create each event within the quest
             QuestEvent a = quest.AddQuestEvent("test1", "description 1", aLocation, quest);
