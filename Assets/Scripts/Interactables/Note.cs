@@ -4,7 +4,11 @@ namespace Destination
 {
     public class Note : InteractableBase
     {
+        [Space, Header("Note Settings")]
+
         public NoteObject note;
+
+        [Space, Header("UI Settings")]
 
         public Canvas canvas;
 

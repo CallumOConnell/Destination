@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a3993bbc59190b49928575c94e0a2bf, type: 3}
-  m_Name: Crowbar
+  m_Name: HK416
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 7562195dd1a5ca4489f89810d8bd4b3e, type: 3}
+  icon: {fileID: 0}
   stackable: 0
   type: 2
-  description: This is a crowbar that can be used to pry open locked doors or used
-    to smash in infected heads.
+  description: The HK416 is an Assault Rifle developed and manufactured by German-based
+    company Heckler and Koch (known as H&K or HK). It is derived from the AR-15 platform,
+    designed as an improvement of the M4 Carbine and using the same gas system from
+    the G36.
   data:
-    name: Crowbar
-    id: 1
+    name: HK416
+    id: 4

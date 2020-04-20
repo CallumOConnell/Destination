@@ -4,14 +4,32 @@ namespace Destination
 {
     public class PlayerStats : MonoBehaviour
     {
-        [Space, Header("Player Health")]
+        [Space, Header("Health Settings")]
+        public int currentHealth;
         public int maxHealth = 100;
 
+        [Space, Header("Inventory Settings")]
         public InventoryObject inventory;
 
-        public int currentHealth;
+        [Space, Header("Respawn Settings")]
+        public Transform respawnPosition;
+
+        public RandomItemSpawning lootManager;
+
+        public RespawnEnemies enemyManager;
+
+        public WeaponBase weapon;
+
+        public GameObject respawnPanel;
 
         private void Start() => currentHealth = maxHealth;
+
+        public void TakeDamage(int _amount)
+        {
+            // Create blood screen effect system depending on players current health
+
+            currentHealth -= _amount;
+        }
 
         private void Update()
         {
@@ -26,7 +44,7 @@ namespace Destination
 
 
             */
-            if (currentHealth <= 0) gameObject.SetActive(false);
+            if (currentHealth <= 0) Respawn();
         }
 
         private void OnTriggerEnter(Collider other) // Temp for testing inventory system
@@ -39,6 +57,31 @@ namespace Destination
 
                 Destroy(other.gameObject);
             }
+        }
+
+        private void Respawn()
+        {
+            // Show Death Screen
+            respawnPanel.SetActive(true);
+
+            // Teleport to the beginning of the map
+            transform.position = respawnPosition.position;
+
+            // Reset inventory contents
+            inventory.Clear();
+
+            // Repopulate loot
+            lootManager.PopulateItems();
+
+            // Reset variables
+            currentHealth = maxHealth; // Reset health
+            weapon.currentAmmo = 0; // Reset ammo
+            weapon.spareAmmo = 90;
+
+            // Reset enemies
+            enemyManager.SpawnEnemies();
+
+            // Reset quests
         }
     }
 }

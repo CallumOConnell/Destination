@@ -4,15 +4,18 @@ namespace Destination
 {
     public class InputHandler : MonoBehaviour
     {
-        [Space, Header("Data")]
+        [Space, Header("Data Settings")]
         public InteractionInputData interactionInputData;
 
-        [Space, Header("UI")]
+        [Space, Header("UI Settings")]
         public GameObject inventoryPanel;
         public GameObject questPanel;
         public GameObject hud;
 
         public Canvas canvas;
+
+        [Space, Header("Script References")]
+        public SwitchWeapon switchWeapon;
 
         public bool cursorLocked = true;
 
@@ -25,6 +28,15 @@ namespace Destination
             GetInteractionInputData();
             GetInventoryInputData();
             GetQuestInputData();
+            GetSwitchWeaponInputData();
+        }
+
+        private void GetSwitchWeaponInputData()
+        {
+            if (Input.GetButtonDown("SwitchWeapon"))
+            {
+                switchWeapon.Switch();
+            }
         }
 
         private void GetInteractionInputData()

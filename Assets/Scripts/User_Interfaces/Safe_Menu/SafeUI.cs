@@ -23,6 +23,8 @@ namespace Destination
         public GameObject safeObject;
         public GameObject safeMenu;
 
+        [Space, Header("Manager Settings")]
+
         public InputHandler inputHandler;
 
         private Safe safe;

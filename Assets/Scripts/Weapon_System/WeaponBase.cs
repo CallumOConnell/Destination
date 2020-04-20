@@ -67,7 +67,7 @@ namespace Destination
 
         private float nextTimeToFire = 0f;
 
-        private int currentAmmo = 0;
+        public int currentAmmo = 0;
 
         private bool isAiming = false;
         private bool isReloading = false;
@@ -96,21 +96,21 @@ namespace Destination
             {
                 if (isAutomatic && currentFireMode == FireModes.Auto)
                 {
-                    if (Input.GetButton("Shoot"))
+                    if (Input.GetButton("Attack"))
                     {
                         Shoot();
                     }
                 }
                 else if (isBurst && currentFireMode == FireModes.Burst)
                 {
-                    if (Input.GetButtonDown("Shoot"))
+                    if (Input.GetButtonDown("Attack"))
                     {
                         StartCoroutine(BurstFire());
                     }
                 }
                 else if (isSingle && currentFireMode == FireModes.Single)
                 {
-                    if (Input.GetButtonDown("Shoot"))
+                    if (Input.GetButtonDown("Attack"))
                     {
                         Shoot();
                     }

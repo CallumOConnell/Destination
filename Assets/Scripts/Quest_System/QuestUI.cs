@@ -7,7 +7,6 @@ namespace Destination
     public class QuestUI : MonoBehaviour
     {
         [Space, Header("UI Settings")]
-
         public ListBoxControl availableQuests;
         public ListBoxControl questObjectives;
 
@@ -16,9 +15,12 @@ namespace Destination
         public TextMeshProUGUI questType;
         public TextMeshProUGUI questStatus;
 
+        public GameObject questUI;
+        
+        [Space, Header("Sprite Settings")]
         public Sprite activeQuestIcon;
 
-        public GameObject questUI;
+        [Space, Header("Manager Settings")]
         public GameObject manager;
 
         public InputHandler inputHandler;
@@ -153,7 +155,7 @@ namespace Destination
 
             questStatus.gameObject.SetActive(true);
 
-            compassController.target = currentObjective.location;
+            compassController.compassTarget = currentObjective.location;
         }
 
         private List<Quest> CurrentQuests() => questManager.quests;

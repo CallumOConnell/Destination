@@ -6,10 +6,13 @@ namespace Destination
 {
     public class NoteUI : MonoBehaviour
     {
+        [Space, Header("Audio Settings")]
         public AudioSource audioSource;
 
+        [Space, Header("Input Settings")]
         public InputHandler inputHandler;
 
+        [Space, Header("UI Settings")]
         public GameObject notePanel;
 
         public TextMeshProUGUI noteTitle;

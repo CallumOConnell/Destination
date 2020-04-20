@@ -4,6 +4,7 @@
     {
         Health,
         Equipment,
+        Weapon,
         Default
     }
 }

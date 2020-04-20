@@ -25,6 +25,7 @@ namespace Destination
 
         private AudioSource audioSource;
 
+
         private void Start()
         {
             controller = GetComponent<CharacterController>();
@@ -44,8 +45,7 @@ namespace Destination
 
             float x = Input.GetAxisRaw("Horizontal");
             float z = Input.GetAxisRaw("Vertical");
-            
-            /*
+
             if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical") && isGrounded && !audioSource.isPlaying)
             {
                 audioSource.Play();
@@ -54,14 +54,14 @@ namespace Destination
             {
                 audioSource.Pause();
             }
-            */
+
             Vector3 move = transform.right * x + transform.forward * z;
 
             controller.Move(move * speed * Time.deltaTime);
 
             // Sprinting
 
-            if (Input.GetKey(KeyCode.LeftShift) && isGrounded && !isCrouched)
+            if (Input.GetButtonDown("Sprint") && isGrounded && !isCrouched)
             {
                 controller.Move(move * sprintSpeed * Time.deltaTime);
                 //anim.SetBool("isRunning", true);
@@ -73,7 +73,7 @@ namespace Destination
 
             // Crouching
 
-            if (Input.GetKey(KeyCode.LeftControl))
+            if (Input.GetButtonDown("Crouch"))
             {
                 isCrouched = true;
                 controller.height = 1;

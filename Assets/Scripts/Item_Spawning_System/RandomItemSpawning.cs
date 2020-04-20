@@ -2,26 +2,21 @@
 
 public class RandomItemSpawning : MonoBehaviour
 {
-    public Transform parent;
+    public Transform itemHolder;
 
     public GameObject[] items;
 
     public Transform[] spawnPositions;
 
-    private void Start()
+    public void PopulateItems()
     {
         foreach (Transform spawnPoint in spawnPositions)
         {
             GameObject item = SpawnRandomItem();
 
-            Instantiate(item, spawnPoint.position, Random.rotation, parent);
+            Instantiate(item, spawnPoint.position, Random.rotation, itemHolder);
         }
     }
 
-    private GameObject SpawnRandomItem()
-    {
-        int itemIndex = Random.Range(0, items.Length);
-
-        return items[itemIndex];
-    }
+    private GameObject SpawnRandomItem() => items[Random.Range(0, items.Length)];
 }

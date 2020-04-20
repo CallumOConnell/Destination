@@ -14,6 +14,7 @@ namespace Destination
 
         public TextMeshProUGUI questCompletedText;
 
+        [Space, Header("Quest Locations")]
         public GameObject aLocation;
         public GameObject bLocation;
         public GameObject cLocation;

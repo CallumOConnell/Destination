@@ -4,11 +4,13 @@ namespace Destination
 {
     public class FlashLight : MonoBehaviour
     {
+        [Space, Header("Light Settings")]
         public Light flashLight;
 
+        [Space, Header("Audio Settings")]
         public AudioSource audioSource;
 
-        public AudioClip flashLightSound = null;
+        public AudioClip flashLightSound;
         
         private void Update()
         {
@@ -17,7 +19,6 @@ namespace Destination
                 flashLight.enabled = !flashLight.enabled;
                 audioSource.PlayOneShot(flashLightSound);
             }
-
         }
     }
 }

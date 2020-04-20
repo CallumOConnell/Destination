@@ -4,7 +4,7 @@ namespace Destination
 {
     public class Crowbar : InteractableBase
     {
-        [Space, Header("Audio Settings")]
+        [Space, Header("Inventory Settings")]
         public InventoryObject inventory;
 
         public ItemObject crowbar;

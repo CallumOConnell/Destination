@@ -10,7 +10,7 @@ namespace Destination
         public TextMeshProUGUI percentageText;
         public TextMeshProUGUI statusText;
 
-        public ProgressBar bar;
+        public ProgressBar progressBar;
 
         [HideInInspector]
         public bool timerActive = false;
@@ -27,7 +27,7 @@ namespace Destination
 
             curTime = waitTime;
 
-            bar.gameObject.SetActive(true);
+            progressBar.gameObject.SetActive(true);
 
             StartCoroutine(StartTimer());
         }
@@ -38,7 +38,7 @@ namespace Destination
             {
                 curTime -= Time.deltaTime;
 
-                bar.current = Mathf.RoundToInt((curTime / waitTime) * bar.maximum);
+                progressBar.current = Mathf.RoundToInt((curTime / waitTime) * progressBar.maximum);
 
                 percentageText.text = $"{((curTime / waitTime) * 100):0}%";
 
@@ -51,7 +51,7 @@ namespace Destination
 
             timerActive = false;
 
-            bar.gameObject.SetActive(false);
+            progressBar.gameObject.SetActive(false);
         }
     }
 }

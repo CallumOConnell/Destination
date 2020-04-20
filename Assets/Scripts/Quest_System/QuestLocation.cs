@@ -13,9 +13,9 @@ namespace Destination
          * currently here.
         */
 
-        public QuestManager questManager;
+        private QuestManager questManager;
 
-        public QuestEvent questEvent;
+        private QuestEvent questEvent;
 
         public void Setup(QuestManager _questManager, QuestEvent _questEvent)
         {
@@ -25,11 +25,9 @@ namespace Destination
 
         private void OnTriggerEnter(Collider _other)
         {
-            Debug.Log("A");
             if (!_other.gameObject.CompareTag("Player")) return;
-            Debug.Log("B");
+
             // If we shouldn't be working on this event then don't register it as completed.
-            Debug.Log($"{questEvent.status}");
             if (questEvent.status != QuestEvent.EventStatus.CURRENT) return;
 
             // Inject these back into the Quest Manager to update states.
