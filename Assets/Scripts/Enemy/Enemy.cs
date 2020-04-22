@@ -91,7 +91,7 @@ namespace Destination
         {
             animator.SetTrigger("Attack");
 
-            target.gameObject.GetComponent<PlayerStats>().TakeDamage(damageGiven);
+            target.gameObject.GetComponent<PlayerStats>().ChangeHealth(damageGiven, false);
         }
 
         public void TakeDamage(float amount)

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace Destination
 {
@@ -7,6 +8,8 @@ namespace Destination
         [Space, Header("Health Settings")]
         public int currentHealth;
         public int maxHealth = 100;
+
+        public Image damageOverlay;
 
         [Space, Header("Inventory Settings")]
         public InventoryObject inventory;
@@ -30,19 +33,71 @@ namespace Destination
 
         private void Start() => currentHealth = maxHealth;
 
-        public void TakeDamage(int _amount)
+        public void ChangeHealth(int _amount, bool _heal)
         {
-            // Create blood screen effect system depending on players current health
+            if  (_heal)
+            {
+                if (currentHealth + _amount > maxHealth)
+                {
+                    currentHealth = maxHealth;
+                }
+                else
+                {
+                    currentHealth += _amount;
+                }
+            }
+            else
+            {
+                if (currentHealth - _amount <= 0)
+                {
+                    Respawn();
+                }
+                else
+                {
+                    currentHealth -= _amount;
+                }
+            }
 
-            currentHealth -= _amount;
+            UpdateOverlay();
 
-            if (currentHealth <= 0) Respawn();
+            Debug.Log($"Health: {currentHealth}");
+            Debug.Log($"Opacity: {damageOverlay.color.a}");
         }
+
+        private void UpdateOverlay()
+        {
+           if (currentHealth <= 85)
+           {
+                AdjustOpacity(20f);
+           }
+           else if (currentHealth <= 65)
+           {
+                AdjustOpacity(60f);
+           }
+           else if (currentHealth <= 45)
+           {
+                AdjustOpacity(120f);
+           }
+           else if (currentHealth <= 20)
+           {
+                AdjustOpacity(200f);
+           }
+           else if (currentHealth <= 10)
+           {
+                AdjustOpacity(255f);
+           }
+           else if (currentHealth == 0)
+           {
+                AdjustOpacity(0);
+            }
+        }
+
+        private void AdjustOpacity(float _alpha) => damageOverlay.color = new Color(damageOverlay.color.r, damageOverlay.color.g, damageOverlay.color.b, _alpha);
 
         private void Update()
         {
             // Debug
-            if (Input.GetKeyDown(KeyCode.P)) currentHealth -= 10;
+            if (Input.GetKeyDown(KeyCode.P)) ChangeHealth(10, false);
         }
 
         private void OnTriggerEnter(Collider other) // Temp for testing inventory system
@@ -72,7 +127,7 @@ namespace Destination
             lootManager.PopulateItems();
 
             // Reset variables
-            currentHealth = maxHealth; // Reset health
+            ChangeHealth(100, true); // Reset health
             weapon.currentAmmo = 0; // Reset ammo
             weapon.spareAmmo = 90;
 
