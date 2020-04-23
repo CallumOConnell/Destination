@@ -202,7 +202,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
       propertyPath: m_Name
-      value: Straight Road Vertical (4)
+      value: Straight Road Vertical 4
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
@@ -1015,7 +1015,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 3de1a22a5815c2e48ba79c7eaff23b14,
         type: 3}
       propertyPath: m_Name
-      value: Bollard
+      value: Bollard 1
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 3de1a22a5815c2e48ba79c7eaff23b14,
         type: 3}
@@ -1647,107 +1647,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1621486968}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &425040550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59b6606ef2548734bb6d11b9d160bc7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  rotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  skyIntensityMode:
-    m_OverrideState: 0
-    m_Value: 0
-  exposure:
-    m_OverrideState: 0
-    m_Value: -4
-  multiplier:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  upperHemisphereLuxValue:
-    m_OverrideState: 0
-    m_Value: 4.1361537
-    min: 0
-  upperHemisphereLuxColor:
-    m_OverrideState: 0
-    m_Value: {x: 0.43973592, y: 0.45312452, z: 0.5}
-  desiredLuxValue:
-    m_OverrideState: 0
-    m_Value: 20000
-  updateMode:
-    m_OverrideState: 0
-    m_Value: 0
-  updatePeriod:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-  includeSunInBaking:
-    m_OverrideState: 0
-    m_Value: 0
-  hdriSky:
-    m_OverrideState: 0
-    m_Value: {fileID: 8900000, guid: 76a8dc91c4ad26d45ab43d7f8660149d, type: 3}
-  enableBackplate:
-    m_OverrideState: 0
-    m_Value: 0
-  backplateType:
-    m_OverrideState: 0
-    m_Value: 0
-  groundLevel:
-    m_OverrideState: 0
-    m_Value: 0
-  scale:
-    m_OverrideState: 0
-    m_Value: {x: 32, y: 32}
-  projectionDistance:
-    m_OverrideState: 0
-    m_Value: 16
-    min: 0.0000001
-  plateRotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  plateTexRotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  plateTexOffset:
-    m_OverrideState: 0
-    m_Value: {x: 0, y: 0}
-  blendAmount:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 100
-  shadowTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  pointLightShadow:
-    m_OverrideState: 0
-    m_Value: 0
-  dirLightShadow:
-    m_OverrideState: 0
-    m_Value: 0
-  rectLightShadow:
-    m_OverrideState: 0
-    m_Value: 0
 --- !u!4 &442088982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d6edd2c0f28679246a1497fabb27b42b,
@@ -2188,7 +2087,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &526029717
 PrefabInstance:
@@ -2260,7 +2159,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 3de1a22a5815c2e48ba79c7eaff23b14,
         type: 3}
       propertyPath: m_Name
-      value: Bollard (2)
+      value: Bollard 3
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 3de1a22a5815c2e48ba79c7eaff23b14,
         type: 3}
@@ -2980,12 +2879,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639166840}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 838.1018, y: 396.16068, z: -190.12625}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 279.1018, y: 68.160675, z: -190.12625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1773951475}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639509640
 GameObject:
@@ -3298,7 +3197,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
       propertyPath: m_Name
-      value: Straight Road Vertical (1)
+      value: Straight Road Vertical 1
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
@@ -4500,7 +4399,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 0357bda2368384541ae673daa891dd4d,
         type: 3}
       propertyPath: m_Name
-      value: Straight Building (1)
+      value: Straight Building
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 0357bda2368384541ae673daa891dd4d,
         type: 3}
@@ -4509,6 +4408,107 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0357bda2368384541ae673daa891dd4d, type: 3}
+--- !u!114 &901528201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b6606ef2548734bb6d11b9d160bc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: -4
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 4.1361537
+    min: 0
+  upperHemisphereLuxColor:
+    m_OverrideState: 0
+    m_Value: {x: 0.43973592, y: 0.45312452, z: 0.5}
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  hdriSky:
+    m_OverrideState: 0
+    m_Value: {fileID: 8900000, guid: 76a8dc91c4ad26d45ab43d7f8660149d, type: 3}
+  enableBackplate:
+    m_OverrideState: 0
+    m_Value: 0
+  backplateType:
+    m_OverrideState: 0
+    m_Value: 0
+  groundLevel:
+    m_OverrideState: 0
+    m_Value: 0
+  scale:
+    m_OverrideState: 0
+    m_Value: {x: 32, y: 32}
+  projectionDistance:
+    m_OverrideState: 0
+    m_Value: 16
+    min: 0.0000001
+  plateRotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  plateTexRotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  plateTexOffset:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0}
+  blendAmount:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 100
+  shadowTint:
+    m_OverrideState: 0
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  pointLightShadow:
+    m_OverrideState: 0
+    m_Value: 0
+  dirLightShadow:
+    m_OverrideState: 0
+    m_Value: 0
+  rectLightShadow:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!1 &914332521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4624,7 +4624,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &984928688 stripped
 Transform:
@@ -4644,7 +4644,7 @@ GameObject:
   - component: {fileID: 986547400}
   - component: {fileID: 986547399}
   m_Layer: 0
-  m_Name: Back Button
+  m_Name: Back Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5845,12 +5845,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224923600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 263.47314, y: -126.93741, z: 502.56723}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -295.52686, y: -454.9374, z: 502.56723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1750003571}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1224923602
 MonoBehaviour:
@@ -6207,7 +6207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: ba99d0aea98f17848a23ec2b066be9d5, type: 2}
   m_StaticLightingSkyUniqueID: 1
-  m_SkySettings: {fileID: 425040550}
+  m_SkySettings: {fileID: 901528201}
   m_SkySettingsFromProfile: {fileID: -6583809483668543877, guid: ba99d0aea98f17848a23ec2b066be9d5,
     type: 2}
 --- !u!4 &1305993643
@@ -6729,7 +6729,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: b4dc24803484a5d40addabcf33dfce0f,
         type: 3}
       propertyPath: m_Name
-      value: Island for road
+      value: Road Island
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: b4dc24803484a5d40addabcf33dfce0f,
         type: 3}
@@ -6750,7 +6750,7 @@ GameObject:
   - component: {fileID: 1419719311}
   - component: {fileID: 1419719312}
   m_Layer: 0
-  m_Name: UI
+  m_Name: --- UI ---
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6771,7 +6771,7 @@ Transform:
   - {fileID: 262781398}
   - {fileID: 772918714}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1419719311
 MonoBehaviour:
@@ -6935,7 +6935,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 90525daad5ff8ac429fd98b2d2219230,
         type: 3}
       propertyPath: m_Name
-      value: Street Lamp (1)
+      value: Street Lamp 2
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 90525daad5ff8ac429fd98b2d2219230,
         type: 3}
@@ -6954,7 +6954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1490305156}
   m_Layer: 0
-  m_Name: Environment
+  m_Name: --- Environment ---
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6985,7 +6985,7 @@ Transform:
   - {fileID: 762268621}
   - {fileID: 417086197}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1505720291
 GameObject:
@@ -7541,6 +7541,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719895463}
   m_CullTransparentMesh: 0
+--- !u!1 &1750003570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1750003571}
+  m_Layer: 0
+  m_Name: --- Post Processing ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1750003571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750003570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 559, y: 328, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1224923601}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1762482869
 GameObject:
   m_ObjectHideFlags: 0
@@ -7697,6 +7728,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762482869}
   m_CullTransparentMesh: 0
+--- !u!1 &1773951474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1773951475}
+  m_Layer: 0
+  m_Name: --- Audio ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1773951475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773951474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 559, y: 328, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 639166842}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786343065
 GameObject:
   m_ObjectHideFlags: 0
@@ -8339,7 +8401,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
       propertyPath: m_Name
-      value: Straight Road Vertical (3)
+      value: Straight Road Vertical 3
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
@@ -8576,7 +8638,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1982920697
 GameObject:
@@ -8887,7 +8949,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
       propertyPath: m_Name
-      value: Straight Road Vertical (2)
+      value: Straight Road Vertical 2
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
@@ -9060,7 +9122,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 3de1a22a5815c2e48ba79c7eaff23b14,
         type: 3}
       propertyPath: m_Name
-      value: Bollard (1)
+      value: Bollard 2
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 3de1a22a5815c2e48ba79c7eaff23b14,
         type: 3}
@@ -9329,7 +9391,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
       propertyPath: m_Name
-      value: Straight Road Vertical
+      value: Straight Road Vertical 5
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: d6edd2c0f28679246a1497fabb27b42b,
         type: 3}
@@ -9486,7 +9548,12 @@ PrefabInstance:
     - target: {fileID: 4182930121515939143, guid: f99b051fb8546d54a8803320ab4b6a95,
         type: 3}
       propertyPath: m_Name
-      value: Street Lamp
+      value: Street Lamp 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5272921172431698435, guid: f99b051fb8546d54a8803320ab4b6a95,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f99b051fb8546d54a8803320ab4b6a95, type: 3}

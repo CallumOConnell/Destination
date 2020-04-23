@@ -10,7 +10,7 @@ namespace Destination
         public ItemType[] AllowedItems = new ItemType[0];
 
         [NonSerialized]
-        public UserInterface parent;
+        public InventoryUI parent;
         [NonSerialized]
         public GameObject slotDisplay;
 

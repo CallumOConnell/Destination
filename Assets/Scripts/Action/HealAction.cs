@@ -33,7 +33,7 @@ namespace Destination
 
                 inventory.RemoveItem(new Item(medkit), 1);
 
-                player.GetComponent<PlayerStats>().currentHealth += 5;
+                player.GetComponent<PlayerVitals>().currentHealth += 5;
             }
         }
     }

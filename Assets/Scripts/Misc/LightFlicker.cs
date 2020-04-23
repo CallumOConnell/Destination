@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public class LightFlicker : MonoBehaviour
 {
-    [Tooltip("External light to flicker; you can leave this null if you attach script to a light")]
-    public new Light light;
     [Tooltip("Minimum random light intensity")]
     public float minIntensity = 0f;
     [Tooltip("Maximum random light intensity")]
@@ -13,8 +11,11 @@ public class LightFlicker : MonoBehaviour
     [Range(1, 50)]
     public int smoothing = 5;
 
-    Queue<float> smoothQueue;
-    float lastSum = 0;
+    private new Light light;
+
+    private Queue<float> smoothQueue;
+    
+    private float lastSum = 0;
 
     public void Reset()
     {
@@ -26,22 +27,20 @@ public class LightFlicker : MonoBehaviour
     {
         smoothQueue = new Queue<float>(smoothing);
 
-        if (light == null)
-        {
-            light = GetComponent<Light>();
-        }
+        light = GetComponent<Light>();
     }
 
     private void Update()
     {
-
         while (smoothQueue.Count >= smoothing)
         {
             lastSum -= smoothQueue.Dequeue();
         }
 
         float newVal = Random.Range(minIntensity, maxIntensity);
+
         smoothQueue.Enqueue(newVal);
+
         lastSum += newVal;
 
         light.intensity = lastSum / (float)smoothQueue.Count;
