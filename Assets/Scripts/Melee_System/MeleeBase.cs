@@ -29,7 +29,7 @@ namespace Destination
 
         private void Update()
         {
-            if (switchWeapon.currentWeapon == "Crowbar")
+            if (switchWeapon.currentWeapon == "Melee")
             {
                 if (Time.time >= nextAttackTime)
                 {
@@ -49,7 +49,7 @@ namespace Destination
         {
             animator.SetBool("isAttack", true);
 
-            audioSource.PlayOneShot(attackCries[Random.Range(0, attackCries.Length)]);
+            //audioSource.PlayOneShot(attackCries[Random.Range(0, attackCries.Length)]);
 
             Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 
