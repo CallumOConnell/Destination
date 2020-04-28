@@ -7,25 +7,27 @@ namespace Destination
     {
         public Slider staminaBar;
 
-        public CharacterController controller;
-
-        public PlayerMovement playerMovement;
-
         public int maxStamina = 100;
         public int staminaFallRate = 1;
         public int staminaFallMultiplier = 5;
         public int staminaRegenRate = 1;
         public int staminaRegenMultiplier = 5;
 
+        private PlayerMovement playerMovement;
+
         private void Start()
         {
+            playerMovement = GetComponent<PlayerMovement>();
+
             staminaBar.maxValue = maxStamina;
             staminaBar.value = maxStamina;
         }
 
         private void Update()
         {
-            if (Input.GetButton("Sprint"))
+            bool isMoving = Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") < 0;
+
+            if (isMoving && Input.GetButton("Sprint"))
             {
                 staminaBar.value -= Time.deltaTime / staminaFallRate * staminaFallMultiplier;
             }

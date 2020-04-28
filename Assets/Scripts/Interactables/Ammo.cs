@@ -1,4 +1,4 @@
-﻿using TMPro;
+﻿using UnityEngine;
 
 namespace Destination
 {
@@ -8,7 +8,9 @@ namespace Destination
 
         public int amount;
 
-        public TextMeshProUGUI pickupText;
+        public PickupItem pickupItem;
+
+        public Sprite icon;
 
         public override void OnInteract()
         {
@@ -16,7 +18,9 @@ namespace Destination
 
             weaponBase.spareAmmo += amount;
 
-            pickupText.text = $"+ 5.56 x {amount}";
+            Destroy(gameObject);
+
+            pickupItem.Display("5.56 Ammo", amount, icon);
         }
     }
 }

@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class FPS : MonoBehaviour
-{  
-    private float hudRefreshRate = 1f;
-
-    private Text fpsText = null;
-
-    private float timer = 0;
-
-    private void Awake() => fpsText = GetComponent<Text>();
-
-    private void Update()
+namespace Destination
+{
+    public class FPS : MonoBehaviour
     {
-        if (Time.unscaledTime > timer)
+        private Text fpsText;
+
+        private float timer = 0;
+
+        private void Awake() => fpsText = GetComponent<Text>();
+
+        private void Update()
         {
-            int currentFPS = (int)(1f / Time.unscaledDeltaTime);
+            if (Time.unscaledTime > timer)
+            {
+                int currentFPS = (int)(1f / Time.unscaledDeltaTime);
 
-            fpsText.text = $"FPS: {currentFPS}";
+                fpsText.text = $"FPS: {currentFPS}";
 
-            timer = Time.unscaledTime + hudRefreshRate;
+                timer = Time.unscaledTime + 1f;
+            }
         }
     }
 }

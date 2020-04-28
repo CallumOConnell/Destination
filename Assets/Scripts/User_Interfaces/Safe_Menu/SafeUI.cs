@@ -7,32 +7,26 @@ namespace Destination
     public class SafeUI : MonoBehaviour
     {
         [Space, Header("UI Settings")]
-
         public TMP_InputField inputText;
 
-        [Space, Header("Audio Settings")]
-
-        public AudioSource audioSource;
-
-        public AudioClip errorSound;
-
         [Space, Header("Safe Settings")]
-
         public string correctCode = "1234";
 
         public GameObject safeObject;
         public GameObject safeMenu;
 
         [Space, Header("Manager Settings")]
-
         public InputHandler inputHandler;
 
         private Safe safe;
+
+        private AudioSource audioSource;
 
         private string code;
 
         private void Start()
         {
+            audioSource = safeMenu.GetComponent<AudioSource>();
             safe = safeObject.GetComponent<Safe>();
 
             ResetInput();
@@ -153,7 +147,7 @@ namespace Destination
             }
             else
             {
-                audioSource.PlayOneShot(errorSound);
+                audioSource.Play();
 
                 ResetInput();
             }

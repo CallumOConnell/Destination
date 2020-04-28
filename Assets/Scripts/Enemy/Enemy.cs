@@ -8,7 +8,8 @@ namespace Destination
     {
         public float health = 50f;
         public float hearingRadius = 10f;
-        
+        public float attackRate = 1f;
+
         public int damageGiven = 5;
 
         private Animator animator;
@@ -16,6 +17,8 @@ namespace Destination
         private Transform target;
 
         private NavMeshAgent enemyAgent;
+
+        private float nextAttackTime = 0f;
 
         private void Start()
         {
@@ -83,15 +86,22 @@ namespace Destination
             yield return new WaitForSeconds(5f);
 
             gameObject.SetActive(false);
-
-            //Destroy(gameObject);
         }
 
         private void Attack()
         {
-            animator.SetTrigger("Attack");
 
-            target.gameObject.GetComponent<PlayerVitals>().ChangeHealth(damageGiven, false);
+            if (Time.time >= nextAttackTime)
+            {
+
+                animator.SetTrigger("Attack");
+
+                StartCoroutine(SlowDown());
+
+                target.gameObject.GetComponent<PlayerVitals>().ChangeHealth(damageGiven, false);
+
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
 
         public void TakeDamage(float amount)

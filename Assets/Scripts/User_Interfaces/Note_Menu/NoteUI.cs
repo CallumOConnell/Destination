@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Destination
 {
@@ -37,6 +38,8 @@ namespace Destination
             audioSource.clip = _note.audioClip;
 
             audioSource.Play();
+
+            StartCoroutine(ResetAudio(_note.audioClip.length));
         }
 
         public void CloseNote()
@@ -50,15 +53,30 @@ namespace Destination
 
         public void UnpauseAudio()
         {
-            audioSource.UnPause();
+            if (audioSource.isPlaying)
+            {
+                audioSource.UnPause();
+            }
+            else
+            {
+                audioSource.Play();
+            }
 
-            pauseButton.gameObject.SetActive(false);
-            playButton.gameObject.SetActive(true);
+            pauseButton.gameObject.SetActive(true);
+            playButton.gameObject.SetActive(false);
         }
 
         public void PauseAudio()
         {
             audioSource.Pause();
+
+            playButton.gameObject.SetActive(true);
+            pauseButton.gameObject.SetActive(false);
+        }
+
+        private IEnumerator ResetAudio(float _length)
+        {
+            yield return new WaitForSeconds(_length);
 
             playButton.gameObject.SetActive(true);
             pauseButton.gameObject.SetActive(false);

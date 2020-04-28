@@ -21,9 +21,7 @@ namespace Destination
         public GameObject dLocation;
         public GameObject eLocation;
 
-        private void Start() => SetupQuests();
-
-        public void SetupQuests()
+        private void Start()
         {
             // Define quest basic details
             Quest quest = new Quest("Test Quest", "First quest to complete.", "Storyline Quest");
@@ -67,9 +65,6 @@ namespace Destination
             // Add all quests to list
             quests.Add(quest);
             quests.Add(test);
-
-            //quest.PrintPaths();
-            //test.PrintPaths();
         }
 
         private IEnumerator DisplayCompletion(string _questName)

@@ -15,21 +15,9 @@ namespace Destination
         public InventoryObject inventory;
 
         [Space, Header("Respawn Settings")]
-        public Transform respawnPosition;
-
-        public RandomItemSpawning lootManager;
-
-        public RespawnEnemies enemyManager;
-
-        public QuestManager questManager;
-
-        public WeaponBase weapon;
-
         public GameObject respawnPanel;
 
-        public ChapterText chapterText;
-
-        public AudioManager audioManager;
+        public InputHandler inputManager;
 
         private void Start() => currentHealth = maxHealth;
 
@@ -50,7 +38,7 @@ namespace Destination
             {
                 if (currentHealth - _amount <= 0)
                 {
-                    Respawn();
+                    Die();
                 }
                 else
                 {
@@ -59,9 +47,6 @@ namespace Destination
             }
 
             UpdateOverlay();
-
-            Debug.Log($"Health: {currentHealth}");
-            Debug.Log($"Opacity: {damageOverlay.color.a}");
         }
 
         private void UpdateOverlay()
@@ -97,7 +82,7 @@ namespace Destination
         private void Update()
         {
             // Debug
-            if (Input.GetKeyDown(KeyCode.P)) ChangeHealth(10, false);
+            if (Input.GetKeyDown(KeyCode.K)) ChangeHealth(100, false);
         }
 
         private void OnTriggerEnter(Collider other) // Temp for testing inventory system
@@ -112,36 +97,18 @@ namespace Destination
             }
         }
 
-        private void Respawn()
+        private void Die()
         {
-            // Show Death Screen
             respawnPanel.SetActive(true);
 
-            // Teleport to the beginning of the map
-            transform.position = respawnPosition.position;
+            inputManager.UnlockControls();
+        }
 
-            // Reset inventory contents
-            inventory.Clear();
+        public void Respawn()
+        {
+            respawnPanel.SetActive(false);
 
-            // Repopulate loot
-            lootManager.PopulateItems();
-
-            // Reset variables
-            ChangeHealth(100, true); // Reset health
-            weapon.currentAmmo = 0; // Reset ammo
-            weapon.spareAmmo = 90;
-
-            // Reset enemies
-            enemyManager.SpawnEnemies();
-
-            // Reset quests
-            questManager.SetupQuests();
-
-            // Reset chapter text
-            chapterText.alreadyPlayed = false;
-
-            // Reset voice trigger
-            audioManager.ResetTriggers();
+            GameManager.instance.RestartGame();
         }
     }
 }

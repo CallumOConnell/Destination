@@ -11,7 +11,7 @@ namespace Destination
 
         [Space, Header("Attack Settings")]
         public float attackRange = 0.5f;
-        public float attachRate = 2f;
+        public float attackRate = 2f;
 
         public int attackDamage = 20;
 
@@ -39,7 +39,7 @@ namespace Destination
                     {
                         Attack();
 
-                        nextAttackTime = Time.time + 1f / attachRate;
+                        nextAttackTime = Time.time + 1f / attackRate;
                     }
                 }
             }

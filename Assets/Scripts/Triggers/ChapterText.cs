@@ -13,7 +13,7 @@ namespace Destination
 
         public AudioClip voiceLine;
 
-        public bool alreadyPlayed = false;
+        private bool alreadyPlayed = false;
 
         private BoxCollider boxCollider;
 

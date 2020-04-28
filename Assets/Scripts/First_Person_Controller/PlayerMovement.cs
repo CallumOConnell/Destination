@@ -46,15 +46,17 @@ namespace Destination
             float x = Input.GetAxisRaw("Horizontal");
             float z = Input.GetAxisRaw("Vertical");
 
-            if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical") && isGrounded && !audioSource.isPlaying)
+            bool isMoving = Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") < 0;
+
+            if (isMoving && isGrounded && !audioSource.isPlaying)
             {
                 audioSource.Play();
             }
-            else if (!Input.GetButtonDown("Horizontal") || !Input.GetButtonDown("Vertical") && audioSource.isPlaying)
+            else if (!isMoving && audioSource.isPlaying)
             {
                 audioSource.Pause();
             }
-
+            
             Vector3 move = transform.right * x + transform.forward * z;
 
             controller.Move(move * speed * Time.deltaTime);
@@ -75,15 +77,18 @@ namespace Destination
 
             if (Input.GetButtonDown("Crouch"))
             {
-                isCrouched = true;
-                controller.height = 1;
-                speed = 1;
-            }
-            else
-            {
-                isCrouched = false;
-                controller.height = startHeight;
-                speed = 2;
+                if (isCrouched)
+                {
+                    isCrouched = false;
+                    controller.height = startHeight;
+                    speed = 2;
+                }
+                else
+                {
+                    isCrouched = true;
+                    controller.height = 1;
+                    speed = 1;
+                }
             }
 
             // Jumping

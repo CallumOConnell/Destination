@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 
 namespace Destination
 {
@@ -8,8 +7,6 @@ namespace Destination
     {
         public GameObject mainMenu;
         public GameObject settingsMenu;
-        
-        //public GameManager gameManager;
 
         public AudioMixer audioMixer;
 

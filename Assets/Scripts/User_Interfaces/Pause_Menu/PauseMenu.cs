@@ -9,6 +9,8 @@ namespace Destination
 
         public GameObject pauseMenu;
 
+        public InputHandler inputHandler;
+
         private void Update()
         {
             if (Input.GetButtonDown("Pause"))
@@ -31,6 +33,8 @@ namespace Destination
             Time.timeScale = 1f;
 
             isPaused = false;
+
+            inputHandler.LockControls();
         }
 
         private void Pause()
@@ -40,6 +44,8 @@ namespace Destination
             Time.timeScale = 0f;
 
             isPaused = true;
+
+            inputHandler.UnlockControls();
         }
 
         public void LoadMenu()
