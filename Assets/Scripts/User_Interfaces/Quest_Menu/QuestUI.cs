@@ -21,17 +21,14 @@ namespace Destination
         public Sprite activeQuestIcon;
 
         [Space, Header("Manager Settings")]
-        public GameObject manager;
+        public QuestManager questManager;
 
-        public InputHandler inputHandler;
-
-        private QuestManager questManager;
+        public InputHandler inputManager;
 
         private CompassController compassController;
 
         private void Start()
         {
-            questManager = manager.GetComponent<QuestManager>();
             compassController = GetComponent<CompassController>();
 
             availableQuests.OnChange += SelectQuest;
@@ -46,7 +43,7 @@ namespace Destination
                 {
                     questUI.SetActive(false);
 
-                    inputHandler.LockControls();
+                    inputManager.LockControls();
                 }
             }
         }

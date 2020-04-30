@@ -9,7 +9,7 @@ namespace Destination
 
         public GameObject pauseMenu;
 
-        public InputHandler inputHandler;
+        public InputHandler inputManager;
 
         private void Update()
         {
@@ -34,7 +34,7 @@ namespace Destination
 
             isPaused = false;
 
-            inputHandler.LockControls();
+            inputManager.LockControls();
         }
 
         private void Pause()
@@ -45,12 +45,13 @@ namespace Destination
 
             isPaused = true;
 
-            inputHandler.UnlockControls();
+            inputManager.UnlockControls();
         }
 
         public void LoadMenu()
         {
-            SceneManager.LoadScene("Main_Menu");
+            SceneManager.UnloadSceneAsync((int)SceneIndexes.MAP);
+            SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
 
             Time.timeScale = 1f;
         }

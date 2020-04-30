@@ -54,7 +54,7 @@ namespace Destination
             scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.MAP, LoadSceneMode.Additive));
 
             StartCoroutine(GetSceneLoadingProgress());
-            //StartCoroutine(GetTotalProgress());
+            StartCoroutine(GetTotalProgress());
         }
 
         public void RestartGame()
