@@ -9,8 +9,12 @@ namespace Destination
 
         public ItemObject crowbar;
 
+        public PickupItem pickupItem;
+
         [Space, Header("Audio Settings")]
-        public AudioSource[] voiceLine;
+        public AudioSource audioSource;
+
+        public AudioClip audioClip;
 
         public override void OnInteract()
         {
@@ -18,7 +22,9 @@ namespace Destination
 
             inventory.AddItem(new Item(crowbar), 1);
 
-            voiceLine[0].Play();
+            pickupItem.Display(crowbar.name, 1, crowbar.icon);
+
+            audioSource.PlayOneShot(audioClip);
 
             gameObject.SetActive(false);
         }

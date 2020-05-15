@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Destination
 {
@@ -14,10 +15,18 @@ namespace Destination
         
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.T))
+            Gamepad gamepad = Gamepad.current;
+
+            if (gamepad != null)
             {
-                flashLight.enabled = !flashLight.enabled;
-                audioSource.PlayOneShot(flashLightSound);
+                if (gamepad.dpad.up.wasPressedThisFrame)
+                {
+                    if (!InterfaceManager.instance.inDialog)
+                    {
+                        flashLight.enabled = !flashLight.enabled;
+                        audioSource.PlayOneShot(flashLightSound);
+                    }
+                }
             }
         }
     }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7897129656669642584
+--- !u!1 &4793518570354627270
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7897129656669642585}
-  - component: {fileID: 7897129656669642589}
-  - component: {fileID: 7897129656669642588}
-  - component: {fileID: 7897129656669642587}
-  - component: {fileID: 7897129656669642586}
-  m_Layer: 0
-  m_Name: Cube
+  - component: {fileID: 8421351314368176341}
+  - component: {fileID: 686131375926942435}
+  - component: {fileID: 6537302181533181466}
+  - component: {fileID: 3577004518834453865}
+  - component: {fileID: 3577004518834453866}
+  m_Layer: 11
+  m_Name: Example_Crowbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7897129656669642585
+--- !u!4 &8421351314368176341
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7897129656669642584}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 90.11, y: 12.74, z: -62.51}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 4793518570354627270}
+  m_LocalRotation: {x: -0.5832182, y: -0.3998206, z: 0.5832182, w: 0.3998206}
+  m_LocalPosition: {x: 88.29, y: 12.1, z: -58.61}
+  m_LocalScale: {x: 0.36669996, y: 0.3667, z: 0.3667}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7897129656669642589
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 111.135}
+--- !u!33 &686131375926942435
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7897129656669642584}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7897129656669642588
+  m_GameObject: {fileID: 4793518570354627270}
+  m_Mesh: {fileID: 5060444177187149915, guid: 9f649a51b430af44ca709e6fbf446d25, type: 3}
+--- !u!23 &6537302181533181466
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7897129656669642584}
+  m_GameObject: {fileID: 4793518570354627270}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: a2e171069701f1a45a5135becc9476fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,29 +81,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7897129656669642587
+--- !u!65 &3577004518834453865
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7897129656669642584}
+  m_GameObject: {fileID: 4793518570354627270}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7897129656669642586
+  m_Size: {x: 3.0637987, y: 0.68279, z: 0.11879155}
+  m_Center: {x: 0.00020420556, y: -0.00030317905, z: 0}
+--- !u!114 &3577004518834453866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7897129656669642584}
+  m_GameObject: {fileID: 4793518570354627270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb7f47b7cbe41b4bb280f25d1febaf7, type: 3}
+  m_Script: {fileID: 11500000, guid: e888fcaf86c34d84ca1a92a573eed69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 70c80a658b1def341b70bffbc34b7739, type: 2}
+  holdInteract: 1
+  holdDuration: 3
+  isInteractable: 1
+  tooltip: Pickup
+  inventory: {fileID: 11400000, guid: 122aca2135e2cca4983eccac62fdc323, type: 2}
+  crowbar: {fileID: 11400000, guid: 70c80a658b1def341b70bffbc34b7739, type: 2}
+  pickupItem: {fileID: 0}
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: e9fc49b99e3cbfc43a4117e84d470b12, type: 3}

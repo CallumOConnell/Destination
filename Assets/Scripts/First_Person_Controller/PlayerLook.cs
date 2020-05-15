@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Destination
 {
@@ -8,24 +9,28 @@ namespace Destination
 
         public Transform playerBody;
 
-        public InputHandler inputHandler;
-
         private float xRotation = 0f;
 
         private void Start() => Cursor.lockState = CursorLockMode.Locked;
 
         private void Update()
         {
-            if (inputHandler.cursorLocked)
+            if (!InterfaceManager.instance.inDialog)
             {
-                float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-                float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+                Gamepad gamepad = Gamepad.current;
 
-                xRotation -= mouseY;
+                if (gamepad == null) return;
+
+                Vector2 move = gamepad.rightStick.ReadValue();
+
+                float x = move.x * mouseSensitivity * Time.deltaTime;
+                float y = move.y * mouseSensitivity * Time.deltaTime;
+
+                xRotation -= y;
                 xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
                 transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-                playerBody.Rotate(Vector3.up * mouseX);
+                playerBody.Rotate(Vector3.up * x);
             }
         }
     }

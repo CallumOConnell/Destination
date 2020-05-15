@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace Destination
@@ -9,43 +10,42 @@ namespace Destination
 
         public GameObject pauseMenu;
 
-        public InputHandler inputManager;
-
         private void Update()
         {
-            if (Input.GetButtonDown("Pause"))
+            Gamepad gamepad = Gamepad.current;
+
+            if (gamepad != null)
             {
-                if (isPaused)
+                if (gamepad.startButton.wasPressedThisFrame)
                 {
-                    Resume();
-                }
-                else
-                {
-                    Pause();
+                    if (isPaused)
+                    {
+                        Resume();
+                    }
+                    else
+                    {
+                        Pause();
+                    }
                 }
             }
         }
 
         public void Resume()
         {
-            pauseMenu.SetActive(false);
+            InterfaceManager.instance.CloseMenu("pause");
 
             Time.timeScale = 1f;
 
             isPaused = false;
-
-            inputManager.LockControls();
         }
 
         private void Pause()
         {
-            pauseMenu.SetActive(true);
+            InterfaceManager.instance.OpenMenu("pause");
 
             Time.timeScale = 0f;
 
             isPaused = true;
-
-            inputManager.UnlockControls();
         }
 
         public void LoadMenu()

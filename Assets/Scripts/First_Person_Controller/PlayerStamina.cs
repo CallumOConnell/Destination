@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Destination
@@ -25,9 +26,18 @@ namespace Destination
 
         private void Update()
         {
-            bool isMoving = Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") < 0;
+            Gamepad gamepad = Gamepad.current;
 
-            if (isMoving && Input.GetButton("Sprint"))
+            if (gamepad == null) return;
+
+            Vector2 moveAxis = gamepad.leftStick.ReadValue();
+
+            float x = moveAxis.x;
+            float y = moveAxis.y;
+
+            bool isMoving = x > 0 || x < 0 || y > 0 || y < 0;
+
+            if (isMoving && gamepad.leftStickButton.isPressed)
             {
                 staminaBar.value -= Time.deltaTime / staminaFallRate * staminaFallMultiplier;
             }

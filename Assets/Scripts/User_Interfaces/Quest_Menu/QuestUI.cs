@@ -23,8 +23,6 @@ namespace Destination
         [Space, Header("Manager Settings")]
         public QuestManager questManager;
 
-        public InputHandler inputManager;
-
         private CompassController compassController;
 
         private void Start()
@@ -33,19 +31,6 @@ namespace Destination
 
             availableQuests.OnChange += SelectQuest;
             availableQuests.OnDoubleClick += SetQuestActive;
-        }
-
-        private void Update()
-        {
-            if (questUI.activeSelf)
-            {
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    questUI.SetActive(false);
-
-                    inputManager.LockControls();
-                }
-            }
         }
 
         public void UpdateUI()

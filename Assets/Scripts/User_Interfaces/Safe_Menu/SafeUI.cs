@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Destination
 {
@@ -14,9 +15,6 @@ namespace Destination
 
         public GameObject safeObject;
         public GameObject safeMenu;
-
-        [Space, Header("Manager Settings")]
-        public InputHandler inputHandler;
 
         private Safe safe;
 
@@ -36,11 +34,16 @@ namespace Destination
 
         private void Update()
         {
-            if (safeMenu.activeSelf)
+            Gamepad gamepad = Gamepad.current;
+
+            if (gamepad != null)
             {
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (safeMenu.activeSelf)
                 {
-                    CloseMenu();
+                    if (gamepad.buttonEast.wasPressedThisFrame)
+                    {
+                        InterfaceManager.instance.CloseMenu("safe");
+                    }
                 }
             }
         }
@@ -139,7 +142,7 @@ namespace Destination
 
             if (code == correctCode)
             {
-                CloseMenu();
+                InterfaceManager.instance.CloseMenu("safe");
 
                 safe.OpenSafe();
 
@@ -151,13 +154,6 @@ namespace Destination
 
                 ResetInput();
             }
-        }
-
-        private void CloseMenu()
-        {
-            safeMenu.SetActive(false);
-
-            inputHandler.LockControls();
         }
 
         private void OnDestroy() => ButtonHandler.ButtonPressed -= AddDigitToCodeSequence; // Removes event handler when button no longer exists avoids null ref errors

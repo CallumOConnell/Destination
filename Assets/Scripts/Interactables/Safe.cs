@@ -7,8 +7,6 @@ namespace Destination
         [Space, Header("UI Settings")]
         public GameObject safeMenu;
 
-        public InputHandler inputHandler;
-
         private Animator animator;
 
         private void Start() => animator = GetComponent<Animator>();
@@ -17,9 +15,7 @@ namespace Destination
         {
             base.OnInteract();
 
-            inputHandler.UnlockControls();
-
-            safeMenu.SetActive(true);
+            InterfaceManager.instance.OpenMenu("safe");
         }
 
         public void OpenSafe() => animator.SetBool("isOpen", true);

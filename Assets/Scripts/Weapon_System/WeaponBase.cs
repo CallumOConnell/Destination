@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.InputSystem;
 
 namespace Destination
 {
@@ -57,8 +58,6 @@ namespace Destination
 
         public ParticleSystem muzzleFlash;
 
-        public InputHandler inputHandler;
-
         private Animator animator;
 
         private AudioSource audioSource;
@@ -90,49 +89,54 @@ namespace Destination
 
         private void Update()
         {
-            if (isReloading || isCheckingAmmo || changingFireMode || !(inputHandler.cursorLocked)) return;
-            
-            if (Time.time >= nextTimeToFire && Time.timeScale > 0)
+            Gamepad gamepad = Gamepad.current;
+
+            if (gamepad != null)
             {
-                if (isAutomatic && currentFireMode == FireModes.Auto)
+                if (isReloading || isCheckingAmmo || changingFireMode || InterfaceManager.instance.inDialog) return;
+
+                if (Time.time >= nextTimeToFire && Time.timeScale > 0)
                 {
-                    if (Input.GetButton("Attack"))
+                    if (isAutomatic && currentFireMode == FireModes.Auto)
                     {
-                        Shoot();
+                        if (gamepad.rightShoulder.isPressed)
+                        {
+                            Shoot();
+                        }
+                    }
+                    else if (isBurst && currentFireMode == FireModes.Burst)
+                    {
+                        if (gamepad.rightShoulder.wasPressedThisFrame)
+                        {
+                            StartCoroutine(BurstFire());
+                        }
+                    }
+                    else if (isSingle && currentFireMode == FireModes.Single)
+                    {
+                        if (gamepad.rightShoulder.wasPressedThisFrame)
+                        {
+                            Shoot();
+                        }
                     }
                 }
-                else if (isBurst && currentFireMode == FireModes.Burst)
+
+                if (gamepad.leftTrigger.wasPressedThisFrame) // Manual Firemode Change
                 {
-                    if (Input.GetButtonDown("Attack"))
-                    {
-                        StartCoroutine(BurstFire());
-                    }
+                    StartCoroutine(ChangeFireMode());
                 }
-                else if (isSingle && currentFireMode == FireModes.Single)
+
+                if (gamepad.rightTrigger.wasPressedThisFrame && currentAmmo < maxAmmo && spareAmmo > 0) // Manual Reload
                 {
-                    if (Input.GetButtonDown("Attack"))
-                    {
-                        Shoot();
-                    }
+                    StartCoroutine(Reload());
                 }
-            }
 
-            if (Input.GetButtonDown("Firemode")) // Manual Firemode Change
-            {
-                StartCoroutine(ChangeFireMode());
-            }
+                if (gamepad.dpad.left.wasPressedThisFrame && currentAmmo >= 1) // Manual Ammo Check
+                {
+                    StartCoroutine(CheckAmmo());
+                }
 
-            if (Input.GetButtonDown("Reload") && currentAmmo < maxAmmo && spareAmmo > 0) // Manual Reload
-            {
-                StartCoroutine(Reload());
+                AimDownSights();
             }
-
-            if (Input.GetButtonDown("Check Ammo") && currentAmmo >= 1) // Manual Ammo Check
-            {
-                StartCoroutine(CheckAmmo());
-            }
-
-            AimDownSights();
         }
 
         private void FixedUpdate()
@@ -206,13 +210,9 @@ namespace Destination
         {
             isReloading = true;
 
-            //animator.SetBool("isReloading", true);
-
             audioSource.PlayOneShot(gunUnloadSound);
 
             yield return new WaitForSeconds(reloadWaitTime - .25f);
-
-            //animator.SetBool("isReloading", false);
 
             audioSource.PlayOneShot(gunReloadSound);
 
@@ -240,15 +240,11 @@ namespace Destination
 
             DisplayAmmoCount();
 
-            //animator.SetBool("checkAmmo", true);
-
             audioSource.PlayOneShot(gunUnloadSound);
 
             ammoPanel.SetActive(true);
 
             yield return new WaitForSeconds(ammoCheckWaitTime);
-
-            //animator.SetBool("checkAmmo", false);
 
             audioSource.PlayOneShot(gunReloadSound);
 
@@ -369,17 +365,22 @@ namespace Destination
 
         private void AimDownSights()
         {
-            if (Input.GetButton("Aim"))
-            {
-                isAiming = true;
+            Gamepad gamepad = Gamepad.current;
 
-                transform.localPosition = Vector3.Lerp(transform.localPosition, aimPos, Time.deltaTime * adsSpeed);
-            }
-            else
+            if (gamepad != null)
             {
-                isAiming = false;
+                if (gamepad.leftShoulder.isPressed)
+                {
+                    isAiming = true;
 
-                transform.localPosition = Vector3.Lerp(transform.localPosition, originalPos, Time.deltaTime * adsSpeed);
+                    transform.localPosition = Vector3.Lerp(transform.localPosition, aimPos, Time.deltaTime * adsSpeed);
+                }
+                else
+                {
+                    isAiming = false;
+
+                    transform.localPosition = Vector3.Lerp(transform.localPosition, originalPos, Time.deltaTime * adsSpeed);
+                }
             }
         }
     }

@@ -14,11 +14,6 @@ namespace Destination
         [Space, Header("Inventory Settings")]
         public InventoryObject inventory;
 
-        [Space, Header("Respawn Settings")]
-        public GameObject respawnPanel;
-
-        public InputHandler inputManager;
-
         private void Start() => currentHealth = maxHealth;
 
         public void ChangeHealth(int _amount, bool _heal)
@@ -79,12 +74,6 @@ namespace Destination
 
         private void AdjustOpacity(float _alpha) => damageOverlay.color = new Color(damageOverlay.color.r, damageOverlay.color.g, damageOverlay.color.b, _alpha);
 
-        private void Update()
-        {
-            // Debug
-            if (Input.GetKeyDown(KeyCode.K)) ChangeHealth(100, false);
-        }
-
         private void OnTriggerEnter(Collider other) // Temp for testing inventory system
         {
             GroundItem item = other.GetComponent<GroundItem>();
@@ -97,16 +86,11 @@ namespace Destination
             }
         }
 
-        private void Die()
-        {
-            respawnPanel.SetActive(true);
-
-            inputManager.UnlockControls();
-        }
+        private void Die() => InterfaceManager.instance.OpenMenu("respawn");
 
         public void Respawn()
         {
-            respawnPanel.SetActive(false);
+            InterfaceManager.instance.CloseMenu("respawn");
 
             GameManager.instance.RestartGame();
         }

@@ -10,9 +10,6 @@ namespace Destination
         [Space, Header("Audio Settings")]
         public AudioSource audioSource;
 
-        [Space, Header("Input Settings")]
-        public InputHandler inputHandler;
-
         [Space, Header("UI Settings")]
         public GameObject notePanel;
 
@@ -26,14 +23,12 @@ namespace Destination
 
         public void OpenNote(NoteObject _note)
         {
-            inputHandler.UnlockControls();
-
             noteTitle.text = _note.title;
             noteAuthor.text = _note.author;
             noteContent.text = _note.content;
             noteThoughts.text = _note.thoughts;
 
-            notePanel.SetActive(true);
+            InterfaceManager.instance.OpenMenu("note");
 
             audioSource.clip = _note.audioClip;
 
@@ -46,9 +41,7 @@ namespace Destination
         {
             audioSource.Stop();
 
-            notePanel.SetActive(false);
-
-            inputHandler.LockControls();
+            InterfaceManager.instance.CloseMenu("note");
         }
 
         public void UnpauseAudio()

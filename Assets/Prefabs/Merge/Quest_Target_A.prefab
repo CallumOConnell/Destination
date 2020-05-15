@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7769544796051805605
+--- !u!1 &5742351915430825027
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7769544796051805604}
-  - component: {fileID: 7769544796051805600}
-  - component: {fileID: 7769544796051805601}
-  - component: {fileID: 7769544796051805606}
-  - component: {fileID: 7769544796051805607}
-  m_Layer: 11
-  m_Name: Ammo
+  - component: {fileID: 5742351915430825031}
+  - component: {fileID: 5742351915430825024}
+  - component: {fileID: 5742351915430825025}
+  - component: {fileID: 5742351915430825026}
+  - component: {fileID: 5742351915430825030}
+  m_Layer: 0
+  m_Name: Quest_Target_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7769544796051805604
+--- !u!4 &5742351915430825031
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7769544796051805605}
+  m_GameObject: {fileID: 5742351915430825027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92, y: 12.58, z: -49.56}
+  m_LocalPosition: {x: 82.1, y: 16.17, z: -44.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7769544796051805600
+--- !u!33 &5742351915430825024
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7769544796051805605}
+  m_GameObject: {fileID: 5742351915430825027}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7769544796051805601
+--- !u!23 &5742351915430825025
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7769544796051805605}
+  m_GameObject: {fileID: 5742351915430825027}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,36 +81,28 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7769544796051805606
+--- !u!65 &5742351915430825026
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7769544796051805605}
+  m_GameObject: {fileID: 5742351915430825027}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7769544796051805607
+--- !u!114 &5742351915430825030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7769544796051805605}
+  m_GameObject: {fileID: 5742351915430825027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f212bf43c64aa4eb6f639a51d56869, type: 3}
+  m_Script: {fileID: 11500000, guid: d428f9ac485f4fb479a68d49a66a4694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdInteract: 0
-  holdDuration: 0
-  isInteractable: 1
-  tooltip: Pickup
-  weaponBase: {fileID: 0}
-  amount: 30
-  pickupItem: {fileID: 0}
-  icon: {fileID: 21300000, guid: d06437024d56f014aa9956ef04703d9e, type: 3}

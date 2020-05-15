@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Destination
 {
@@ -17,9 +18,14 @@ namespace Destination
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.G))
+            Gamepad gamepad = Gamepad.current;
+
+            if (gamepad != null)
             {
-                StartCoroutine(ApplyMedkit());
+                if (gamepad.dpad.right.wasPressedThisFrame)
+                {
+                    StartCoroutine(ApplyMedkit());
+                }
             }
         }
 
@@ -33,7 +39,7 @@ namespace Destination
 
                 inventory.RemoveItem(new Item(medkit), 1);
 
-                player.GetComponent<PlayerVitals>().currentHealth += 5;
+                player.GetComponent<PlayerVitals>().currentHealth += 25;
             }
         }
     }

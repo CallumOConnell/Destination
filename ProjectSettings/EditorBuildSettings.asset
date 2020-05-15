@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: 93170a21e143faf4889ea79c36d02dd5
   - enabled: 1
-    path: Assets/Scenes/Lost_Testing.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
     path: Assets/Scenes/Level 1 - Lost rework.unity
     guid: bb59d815037aecc4dba8a4f707bd1900
+  - enabled: 1
+    path: Assets/Scenes/Lost_Testing.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

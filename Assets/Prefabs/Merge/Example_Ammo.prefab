@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2591040089858937451
+--- !u!1 &1240880380874453992
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,51 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1562292649711394936}
-  - component: {fileID: 7563063695158237774}
-  - component: {fileID: 4308237539925599927}
-  - component: {fileID: 5824513510955515332}
-  - component: {fileID: 5824513510955515335}
+  - component: {fileID: 1240880380874453993}
+  - component: {fileID: 1240880380874453997}
+  - component: {fileID: 1240880380874453996}
+  - component: {fileID: 1240880380874453995}
+  - component: {fileID: 1240880380874453994}
   m_Layer: 11
-  m_Name: Crowbar
+  m_Name: Example_Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1562292649711394936
+--- !u!4 &1240880380874453993
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2591040089858937451}
-  m_LocalRotation: {x: -0.5832182, y: -0.3998206, z: 0.5832182, w: 0.3998206}
-  m_LocalPosition: {x: 88.29, y: 12.1, z: -58.61}
-  m_LocalScale: {x: 0.36669996, y: 0.3667, z: 0.3667}
+  m_GameObject: {fileID: 1240880380874453992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 92, y: 12.58, z: -49.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 111.135}
---- !u!33 &7563063695158237774
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1240880380874453997
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2591040089858937451}
-  m_Mesh: {fileID: 5060444177187149915, guid: 9f649a51b430af44ca709e6fbf446d25, type: 3}
---- !u!23 &4308237539925599927
+  m_GameObject: {fileID: 1240880380874453992}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1240880380874453996
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2591040089858937451}
+  m_GameObject: {fileID: 1240880380874453992}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a2e171069701f1a45a5135becc9476fb, type: 2}
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,36 +81,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5824513510955515332
+--- !u!65 &1240880380874453995
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2591040089858937451}
+  m_GameObject: {fileID: 1240880380874453992}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.0637987, y: 0.68279, z: 0.11879155}
-  m_Center: {x: 0.00020420556, y: -0.00030317905, z: 0}
---- !u!114 &5824513510955515335
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1240880380874453994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2591040089858937451}
+  m_GameObject: {fileID: 1240880380874453992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e888fcaf86c34d84ca1a92a573eed69d, type: 3}
+  m_Script: {fileID: 11500000, guid: e8f212bf43c64aa4eb6f639a51d56869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdInteract: 1
-  holdDuration: 3
+  holdInteract: 0
+  holdDuration: 0
   isInteractable: 1
   tooltip: Pickup
-  inventory: {fileID: 11400000, guid: 122aca2135e2cca4983eccac62fdc323, type: 2}
-  crowbar: {fileID: 11400000, guid: 70c80a658b1def341b70bffbc34b7739, type: 2}
-  voiceLine:
-  - {fileID: 0}
+  weaponBase: {fileID: 0}
+  amount: 30
+  pickupItem: {fileID: 0}
+  icon: {fileID: 21300000, guid: d06437024d56f014aa9956ef04703d9e, type: 3}

@@ -1,14 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Destination
 {
     public class MeleeBase : MonoBehaviour
     {
-        [Space, Header("Audio Settings")]
-        public AudioSource audioSource;
-
-        public AudioClip[] attackCries;
-
         [Space, Header("Attack Settings")]
         public float attackRange = 0.5f;
         public float attackRate = 2f;
@@ -29,13 +25,17 @@ namespace Destination
 
         private void Update()
         {
+            Gamepad gamepad = Gamepad.current;
+
+            if (gamepad == null) return;
+
             if (switchWeapon.currentWeapon == "Melee")
             {
                 if (Time.time >= nextAttackTime)
                 {
                     animator.SetBool("isAttack", false);
 
-                    if (Input.GetButtonDown("Attack"))
+                    if (gamepad.rightShoulder.wasPressedThisFrame)
                     {
                         Attack();
 
@@ -48,8 +48,6 @@ namespace Destination
         private void Attack()
         {
             animator.SetBool("isAttack", true);
-
-            //audioSource.PlayOneShot(attackCries[Random.Range(0, attackCries.Length)]);
 
             Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
 

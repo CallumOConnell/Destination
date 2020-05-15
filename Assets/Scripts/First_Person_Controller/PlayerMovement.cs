@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Destination
 {
@@ -36,71 +37,75 @@ namespace Destination
 
         private void Update()
         {
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            Gamepad gamepad = Gamepad.current;
 
-            if (isGrounded && velocity.y < 0)
+            if (gamepad == null) return;
+
+            if (!InterfaceManager.instance.inDialog)
             {
-                velocity.y = -2f;
-            }
+                isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-            float x = Input.GetAxisRaw("Horizontal");
-            float z = Input.GetAxisRaw("Vertical");
-
-            bool isMoving = Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Vertical") > 0 || Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Vertical") < 0;
-
-            if (isMoving && isGrounded && !audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
-            else if (!isMoving && audioSource.isPlaying)
-            {
-                audioSource.Pause();
-            }
-            
-            Vector3 move = transform.right * x + transform.forward * z;
-
-            controller.Move(move * speed * Time.deltaTime);
-
-            // Sprinting
-
-            if (Input.GetButton("Sprint") && isGrounded && !isCrouched)
-            {
-                controller.Move(move * sprintSpeed * Time.deltaTime);
-                //anim.SetBool("isRunning", true);
-            }
-            else
-            {
-                //anim.SetBool("isRunning", false);
-            }
-
-            // Crouching
-
-            if (Input.GetButtonDown("Crouch"))
-            {
-                if (isCrouched)
+                if (isGrounded && velocity.y < 0)
                 {
-                    isCrouched = false;
-                    controller.height = startHeight;
-                    speed = 2;
+                    velocity.y = -2f;
                 }
-                else
+
+                Vector2 moveAxis = gamepad.leftStick.ReadValue();
+
+                float x = moveAxis.x;
+                float z = moveAxis.y;
+
+                bool isMoving = x > 0 || x < 0 || z > 0 || z < 0;
+
+                if (isMoving && isGrounded && !audioSource.isPlaying)
                 {
-                    isCrouched = true;
-                    controller.height = 1;
-                    speed = 1;
+                    audioSource.Play();
                 }
+                else if (!isMoving && audioSource.isPlaying)
+                {
+                    audioSource.Pause();
+                }
+
+                Vector3 move = transform.right * x + transform.forward * z;
+
+                controller.Move(move * speed * Time.deltaTime);
+
+                // Sprinting
+
+                if (gamepad.leftStickButton.isPressed && isGrounded && !isCrouched)
+                {
+                    controller.Move(move * sprintSpeed * Time.deltaTime);
+                }
+
+                // Crouching
+
+                if (gamepad.buttonEast.wasPressedThisFrame)
+                {
+                    if (isCrouched)
+                    {
+                        isCrouched = false;
+                        controller.height = startHeight;
+                        speed = 2;
+                    }
+                    else
+                    {
+                        isCrouched = true;
+                        controller.height = 1;
+                        speed = 1;
+                    }
+                }
+
+                // Jumping
+
+                if (gamepad.buttonSouth.wasPressedThisFrame && isGrounded)
+                {
+                    velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                }
+
+                velocity.y += gravity * Time.deltaTime;
+
+                controller.Move(velocity * Time.deltaTime);
             }
-
-            // Jumping
-
-            if (Input.GetButtonDown("Jump") && isGrounded)
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
-
-            velocity.y += gravity * Time.deltaTime;
-
-            controller.Move(velocity * Time.deltaTime);
         }
     }
 }

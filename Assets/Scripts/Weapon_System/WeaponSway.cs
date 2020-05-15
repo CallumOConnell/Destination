@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Destination
 {
@@ -9,26 +10,30 @@ namespace Destination
         public float maxAmount;
         public float smoothAmount;
 
-        [Space, Header("Manager Settings")]
-        public InputHandler inputManager;
-
         private Vector3 initialPosition;
 
         private void Start() => initialPosition = transform.localPosition;
 
         private void Update()
         {
-            if (inputManager.cursorLocked)
+            Gamepad gamepad = Gamepad.current;
+
+            if (gamepad != null)
             {
-                float movementX = -Input.GetAxis("Mouse X") * amount;
-                float movementY = -Input.GetAxis("Mouse Y") * amount;
+                if (!InterfaceManager.instance.inDialog)
+                {
+                    Vector2 move = gamepad.rightStick.ReadValue();
 
-                movementX = Mathf.Clamp(movementX, -maxAmount, maxAmount);
-                movementY = Mathf.Clamp(movementY, -maxAmount, maxAmount);
+                    float x = move.x * amount;
+                    float y = move.y * amount;
 
-                Vector3 finalPosition = new Vector3(movementX, movementY, 0);
+                    x = Mathf.Clamp(x, -maxAmount, maxAmount);
+                    y = Mathf.Clamp(y, -maxAmount, maxAmount);
 
-                transform.localPosition = Vector3.Lerp(transform.localPosition, finalPosition + initialPosition, Time.deltaTime * smoothAmount);
+                    Vector3 finalPosition = new Vector3(x, y, 0);
+
+                    transform.localPosition = Vector3.Lerp(transform.localPosition, finalPosition + initialPosition, Time.deltaTime * smoothAmount);
+                }
             }
         }
     }

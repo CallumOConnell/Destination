@@ -90,10 +90,8 @@ namespace Destination
 
         private void Attack()
         {
-
             if (Time.time >= nextAttackTime)
             {
-
                 animator.SetTrigger("Attack");
 
                 StartCoroutine(SlowDown());

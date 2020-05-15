@@ -12,7 +12,9 @@ namespace Destination
 
         [Space, Header("Audio Settings")]
 
-        public AudioSource[] voiceLine;
+        public AudioSource audioSource;
+
+        public AudioClip audioClip;
 
         private Animator animator;
 
@@ -28,7 +30,9 @@ namespace Destination
             }
             else
             {
-                voiceLine[0].Play();
+                audioSource.clip = audioClip;
+
+                audioSource.Play();
             }
         }
     }
