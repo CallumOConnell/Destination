@@ -8,11 +8,9 @@ namespace Destination
         [Space, Header("Light Settings")]
         public Light flashLight;
 
-        [Space, Header("Audio Settings")]
-        public AudioSource audioSource;
+        private AudioSource audioSource;
+        private void Awake() => audioSource = GetComponent<AudioSource>();
 
-        public AudioClip flashLightSound;
-        
         private void Update()
         {
             Gamepad gamepad = Gamepad.current;
@@ -24,7 +22,7 @@ namespace Destination
                     if (!InterfaceManager.instance.inDialog)
                     {
                         flashLight.enabled = !flashLight.enabled;
-                        audioSource.PlayOneShot(flashLightSound);
+                        audioSource.Play();
                     }
                 }
             }

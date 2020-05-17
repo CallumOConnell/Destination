@@ -32,6 +32,7 @@ namespace Destination
         public AudioClip gunUnloadSound;
         public AudioClip fireModeSwitchSound;
         public AudioClip gunDryFireSound;
+        public AudioClip bulletDropSound;
 
         [Space, Header("Weapon Firemode Settings")]
         public bool isSingle = true;
@@ -148,6 +149,13 @@ namespace Destination
             animator.SetBool("isAiming", isAiming);
         }
 
+        private IEnumerator DropCasing()
+        {
+            yield return new WaitForSeconds(0.5f);
+
+            audioSource.PlayOneShot(bulletDropSound);
+        }
+
         private void Shoot()
         {
             nextTimeToFire = Time.time + fireRate;
@@ -162,6 +170,8 @@ namespace Destination
             // Muzzle flash here
 
             audioSource.PlayOneShot(gunShootSound);
+
+            StartCoroutine(DropCasing());
 
             animator.CrossFadeInFixedTime("HK416_Fire", 0.1f);
 
