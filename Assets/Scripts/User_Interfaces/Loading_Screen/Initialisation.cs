@@ -42,6 +42,7 @@ public class Initialisation : MonoBehaviour
     {
         StartCoroutine(SpawnEnemies());
         StartCoroutine(PopulateLoot());
+        StartCoroutine(CreateCharacter());
     }
 
     private void PoolObjects()
@@ -134,10 +135,29 @@ public class Initialisation : MonoBehaviour
     }
 
     private GameObject SpawnRandomItem() => itemsPrefabs[Random.Range(0, itemsPrefabs.Length)];
+
+    private IEnumerator CreateCharacter()
+    {
+        currentStage = InitialisationStage.Character;
+
+        for (int i = 0; i < 60; i++)
+        {
+            Debug.Log("Fake Wait");
+
+            //yield return new WaitForSeconds(1f);
+
+            progress = i / (float)60;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        isDone = true;
+    }
 }
 
 public enum InitialisationStage
 {
     Enemies,
-    Loot
+    Loot,
+    Character
 }

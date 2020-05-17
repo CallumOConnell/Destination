@@ -83853,17 +83853,7 @@ MonoBehaviour:
   currentStage: 0
   enemyHolder: {fileID: 1539907649}
   enemyPrefab: {fileID: 1141121883}
-  positions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  positions: []
   amountToPool: 0
   itemHolder: {fileID: 922920021}
   itemsPrefabs: []

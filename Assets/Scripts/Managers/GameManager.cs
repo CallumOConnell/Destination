@@ -121,6 +121,12 @@ namespace Destination
 
                             break;
                         }
+                        case InitialisationStage.Character:
+                        {
+                            loadingText.text = $"Creating Character: {totalSpawnProgress}%";
+
+                            break;
+                        }
                     }
                 }
 
