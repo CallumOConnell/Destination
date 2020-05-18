@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a3993bbc59190b49928575c94e0a2bf, type: 3}
-  m_Name: HK416
+  m_Name: Medkit
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  stackable: 0
-  type: 2
-  description: The HK416 is an Assault Rifle developed and manufactured by German-based
-    company Heckler and Koch (known as H&K or HK). It is derived from the AR-15 platform,
-    designed as an improvement of the M4 Carbine and using the same gas system from
-    the G36.
+  icon: {fileID: 21300000, guid: d06437024d56f014aa9956ef04703d9e, type: 3}
+  stackable: 1
+  type: 0
+  description: The medkit can be used to heal the player.
   data:
-    name: HK416
-    id: 4
+    name: Medkit
+    id: 1

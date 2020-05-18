@@ -33,16 +33,13 @@ namespace Destination
         {
             if (inventory.IsItemInInventory(medkit))
             {
-                if (player.GetComponent<PlayerVitals>().currentHealth < player.GetComponent<PlayerVitals>().maxHealth)
-                {
-                    timer.CreateTimer(5f);
+                timer.CreateTimer(5f);
 
-                    yield return new WaitUntil(() => !timer.timerActive);
+                yield return new WaitUntil(() => !timer.timerActive);
 
-                    inventory.RemoveItem(new Item(medkit), 1);
+                inventory.RemoveItem(new Item(medkit), 1);
 
-                    player.GetComponent<PlayerVitals>().ChangeHealth(25, true);
-                }
+                player.GetComponent<PlayerVitals>().currentHealth += 25;
             }
         }
     }

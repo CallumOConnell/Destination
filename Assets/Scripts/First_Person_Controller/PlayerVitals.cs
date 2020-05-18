@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Destination
@@ -14,9 +13,6 @@ namespace Destination
 
         [Space, Header("Inventory Settings")]
         public InventoryObject inventory;
-
-        [HideInInspector]
-        public bool dead = false;
 
         private void Start() => currentHealth = maxHealth;
 
@@ -37,8 +33,6 @@ namespace Destination
             {
                 if (currentHealth - _amount <= 0)
                 {
-                    dead = true;
-
                     Die();
                 }
                 else
@@ -72,21 +66,13 @@ namespace Destination
            {
                 AdjustOpacity(255f);
            }
-           else if (currentHealth == maxHealth)
+           else if (currentHealth == 0)
            {
                 AdjustOpacity(0);
            }
         }
 
         private void AdjustOpacity(float _alpha) => damageOverlay.color = new Color(damageOverlay.color.r, damageOverlay.color.g, damageOverlay.color.b, _alpha);
-
-        private void Update()
-        {
-            if (Keyboard.current.pKey.wasPressedThisFrame)
-            {
-                ChangeHealth(20, false);
-            }
-        }
 
         private void OnTriggerEnter(Collider other) // Temp for testing inventory system
         {

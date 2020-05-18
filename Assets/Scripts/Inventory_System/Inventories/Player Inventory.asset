@@ -14,23 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savePath: /inventory.save
   database: {fileID: 11400000, guid: 73a1c9fef04fcbc4a8e849f01c89e3d8, type: 2}
-  container:
-    slots:
+  type: 0
+  Container:
+    Slots:
     - AllowedItems: 
       item:
-        name: Bandage
-        id: 0
-      amount: 6
+        name: 
+        id: -1
+      amount: 0
     - AllowedItems: 
       item:
-        name: HK416
-        id: 2
-      amount: 3
+        name: 
+        id: -1
+      amount: 0
     - AllowedItems: 
       item:
-        name: HK416
-        id: 2
-      amount: 3
+        name: 
+        id: -1
+      amount: 0
     - AllowedItems: 
       item:
         name: 

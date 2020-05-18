@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Destination
 {
@@ -18,6 +19,7 @@ namespace Destination
         public TextMeshProUGUI noteThoughts;
 
         public Button playButton;
+        public Button pauseButton;
 
         public void OpenNote(NoteObject _note)
         {
@@ -30,7 +32,9 @@ namespace Destination
 
             audioSource.clip = _note.audioClip;
 
-            PlayAudio();
+            audioSource.Play();
+
+            StartCoroutine(ResetAudio(_note.audioClip.length));
         }
 
         public void CloseNote()
@@ -40,12 +44,35 @@ namespace Destination
             InterfaceManager.instance.CloseMenu("note");
         }
 
-        public void PlayAudio()
+        public void UnpauseAudio()
         {
-            if (audioSource.clip)
+            if (audioSource.isPlaying)
+            {
+                audioSource.UnPause();
+            }
+            else
             {
                 audioSource.Play();
             }
+
+            pauseButton.gameObject.SetActive(true);
+            playButton.gameObject.SetActive(false);
+        }
+
+        public void PauseAudio()
+        {
+            audioSource.Pause();
+
+            playButton.gameObject.SetActive(true);
+            pauseButton.gameObject.SetActive(false);
+        }
+
+        private IEnumerator ResetAudio(float _length)
+        {
+            yield return new WaitForSeconds(_length);
+
+            playButton.gameObject.SetActive(true);
+            pauseButton.gameObject.SetActive(false);
         }
     }
 }

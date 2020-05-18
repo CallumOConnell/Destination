@@ -22,9 +22,9 @@ namespace Destination
 
             inventory.AddItem(new Item(crowbar), 1);
 
-            audioSource.PlayOneShot(audioClip);
-
             pickupItem.Display(crowbar.name, 1, crowbar.icon);
+
+            audioSource.PlayOneShot(audioClip);
 
             gameObject.SetActive(false);
         }

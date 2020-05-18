@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Initialisation : MonoBehaviour
 {
@@ -74,7 +73,7 @@ public class Initialisation : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.GetComponent<NavMeshAgent>().Warp(spawnPoint.transform.position);
+                enemy.transform.position = spawnPoint.transform.position;
 
                 enemy.SetActive(true);
             }
@@ -143,7 +142,7 @@ public class Initialisation : MonoBehaviour
 
         for (int i = 0; i < 60; i++)
         {
-            //Debug.Log("Fake Wait");
+            Debug.Log("Fake Wait");
 
             //yield return new WaitForSeconds(1f);
 
