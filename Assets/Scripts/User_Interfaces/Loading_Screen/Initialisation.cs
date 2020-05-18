@@ -123,7 +123,7 @@ public class Initialisation : MonoBehaviour
         {
             GameObject item = SpawnRandomItem();
 
-            Instantiate(item, spawnPoint.position, Random.rotation, itemHolder);
+            Instantiate(item, spawnPoint.position, spawnPoint.rotation, itemHolder);
 
             progress = count / (float)spawnPositions.Length;
 

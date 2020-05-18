@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1240880380874453992
+--- !u!1 &5791872098508425032
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1240880380874453993}
-  - component: {fileID: 1240880380874453997}
-  - component: {fileID: 1240880380874453996}
-  - component: {fileID: 1240880380874453995}
-  - component: {fileID: 1240880380874453994}
+  - component: {fileID: 7366628006359577947}
+  - component: {fileID: 1972721339895549805}
+  - component: {fileID: 5214054494991905684}
+  - component: {fileID: 2540366549229248069}
+  - component: {fileID: 2540366549229248066}
   m_Layer: 11
-  m_Name: Example_Ammo
+  m_Name: Ammo_Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1240880380874453993
+--- !u!4 &7366628006359577947
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240880380874453992}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92, y: 12.58, z: -49.56}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 5791872098508425032}
+  m_LocalRotation: {x: -0.56985784, y: 0.41864315, z: 0.41864315, w: 0.56985784}
+  m_LocalPosition: {x: -244.883, y: -14.771, z: 46.81}
+  m_LocalScale: {x: 0.20000003, y: 0.20000003, z: 0.20000002}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1240880380874453997
+--- !u!33 &1972721339895549805
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240880380874453992}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1240880380874453996
+  m_GameObject: {fileID: 5791872098508425032}
+  m_Mesh: {fileID: 5060444177187149915, guid: e086082c2d498694d8daaaea3d455ed2, type: 3}
+--- !u!23 &5214054494991905684
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240880380874453992}
+  m_GameObject: {fileID: 5791872098508425032}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 670224309865224971, guid: e086082c2d498694d8daaaea3d455ed2, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,26 +81,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1240880380874453995
+--- !u!65 &2540366549229248069
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240880380874453992}
+  m_GameObject: {fileID: 5791872098508425032}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1240880380874453994
+  m_Size: {x: 1.5359217, y: 1.5805345, z: 1.0561032}
+  m_Center: {x: -0.000015202628, y: -0.025121797, z: 0.51338583}
+--- !u!114 &2540366549229248066
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240880380874453992}
+  m_GameObject: {fileID: 5791872098508425032}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8f212bf43c64aa4eb6f639a51d56869, type: 3}
@@ -113,4 +113,4 @@ MonoBehaviour:
   weaponBase: {fileID: 0}
   amount: 30
   pickupItem: {fileID: 0}
-  icon: {fileID: 21300000, guid: d06437024d56f014aa9956ef04703d9e, type: 3}
+  icon: {fileID: 21300000, guid: 52d7891db2991264b98241e00a3cc57e, type: 3}

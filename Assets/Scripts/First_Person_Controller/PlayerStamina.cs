@@ -61,7 +61,7 @@ namespace Destination
                 staminaBar.value = 0;
                 currentStamina = 0;
 
-                playerMovement.sprintSpeed = playerMovement.speed;
+                playerMovement.sprintSpeed = playerMovement.walkSpeed;
             }
             else if (currentStamina >= 0)
             {

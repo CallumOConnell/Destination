@@ -5,11 +5,12 @@ namespace Destination
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public float speed = 2f;
+        public float walkSpeed = 6f;
+        public float walkSpeedNormal = 6f;
+        public float sprintSpeed = 8f;
+        public float sprintSpeedNormal = 8f;
         public float gravity = -9.81f;
         public float jumpHeight = 3f;
-        public float sprintSpeed = 3f;
-        public float sprintSpeedNormal = 3f;
         public float groundDistance = 0.4f;
 
         public Transform groundCheck;
@@ -68,7 +69,7 @@ namespace Destination
 
                 Vector3 move = transform.right * x + transform.forward * z;
 
-                controller.Move(move * speed * Time.deltaTime);
+                controller.Move(move * walkSpeed * Time.deltaTime);
 
                 // Sprinting
 
@@ -85,13 +86,13 @@ namespace Destination
                     {
                         isCrouched = false;
                         controller.height = startHeight;
-                        speed = 2;
+                        walkSpeed = walkSpeedNormal;
                     }
                     else
                     {
                         isCrouched = true;
                         controller.height = 1;
-                        speed = 1;
+                        walkSpeed = 2;
                     }
                 }
 
