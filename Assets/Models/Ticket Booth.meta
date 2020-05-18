@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Models/Ticket Booth.meta
 guid: 703d29a9602240d4095145a6e41ca46c
+=======
+guid: 06e8265080096e34188c246e6b6d9d62
+>>>>>>> parent of 9b5bcd8... Merge branch 'master' of https://github.com/CallumOConnell/Destination:Assets/Models/Ticket Machine.meta
+=======
+guid: 703d29a9602240d4095145a6e41ca46c
+>>>>>>> parent of 9b5bcd8... Merge branch 'master' of https://github.com/CallumOConnell/Destination
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
