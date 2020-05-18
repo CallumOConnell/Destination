@@ -52,6 +52,8 @@ namespace Destination
             timerActive = false;
 
             progressBar.gameObject.SetActive(false);
+
+            statusText.text = "Healing";
         }
     }
 }

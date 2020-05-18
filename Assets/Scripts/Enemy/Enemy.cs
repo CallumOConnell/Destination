@@ -20,6 +20,8 @@ namespace Destination
 
         private float nextAttackTime = 0f;
 
+        private bool dead = false;
+
         private void Start()
         {
             target = PlayerManager.instance.player.transform;
@@ -30,26 +32,29 @@ namespace Destination
 
         private void Update()
         {
-            float distance = Vector3.Distance(target.position, transform.position);
-
-            if (distance <= hearingRadius)
+            if (gameObject.activeSelf && !dead && !target.GetComponent<PlayerVitals>().dead)
             {
-                enemyAgent.SetDestination(target.position);
+                float distance = Vector3.Distance(target.position, transform.position);
 
-                animator.SetBool("isRunning", true);
+                if (distance <= hearingRadius)
+                {
+                    enemyAgent.SetDestination(target.position);
 
-                if (distance <= enemyAgent.stoppingDistance)
+                    animator.SetBool("isRunning", true);
+
+                    if (distance <= enemyAgent.stoppingDistance)
+                    {
+                        animator.SetBool("isRunning", false);
+
+                        FaceTarget();
+
+                        Attack();
+                    }
+                }
+                else
                 {
                     animator.SetBool("isRunning", false);
-
-                    FaceTarget();
-
-                    Attack();
                 }
-            }
-            else
-            {
-                animator.SetBool("isRunning", false);
             }
         }
 
@@ -77,6 +82,8 @@ namespace Destination
 
         private IEnumerator Die()
         {
+            dead = true;
+
             gameObject.GetComponent<AudioSource>().Stop();
 
             enemyAgent.isStopped = true;

@@ -14,6 +14,8 @@ namespace Destination
         public int staminaRegenRate = 1;
         public int staminaRegenMultiplier = 5;
 
+        private float currentStamina = 0;
+
         private PlayerMovement playerMovement;
 
         private void Start()
@@ -40,23 +42,28 @@ namespace Destination
             if (isMoving && gamepad.leftStickButton.isPressed)
             {
                 staminaBar.value -= Time.deltaTime / staminaFallRate * staminaFallMultiplier;
+                currentStamina -= Time.deltaTime / staminaFallRate * staminaFallMultiplier;
             }
             else
             {
                 staminaBar.value += Time.deltaTime / staminaRegenRate * staminaRegenMultiplier;
+                currentStamina += Time.deltaTime / staminaRegenRate * staminaRegenMultiplier;
             }
 
-            if (staminaBar.value >= maxStamina)
+            if (currentStamina >= maxStamina)
             {
                 staminaBar.value = maxStamina;
+
+                currentStamina = maxStamina;
             }
-            else if (staminaBar.value <= 0)
+            else if (currentStamina <= 0)
             {
                 staminaBar.value = 0;
+                currentStamina = 0;
 
                 playerMovement.sprintSpeed = playerMovement.speed;
             }
-            else if (staminaBar.value >= 0)
+            else if (currentStamina >= 0)
             {
                 playerMovement.sprintSpeed = playerMovement.sprintSpeedNormal;
             }
