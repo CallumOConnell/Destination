@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a3993bbc59190b49928575c94e0a2bf, type: 3}
   m_Name: HK416
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2f2e8c4cf1917614e966d414b571fe27, type: 3}
   stackable: 0
   type: 2
   description: The HK416 is an Assault Rifle developed and manufactured by German-based
