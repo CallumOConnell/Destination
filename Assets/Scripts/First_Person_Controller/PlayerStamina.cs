@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace Destination
 {
     public class PlayerStamina : MonoBehaviour
     {
-        public Slider staminaBar;
+        //public Slider staminaBar;
 
         public int maxStamina = 100;
         public int staminaFallRate = 1;
@@ -22,8 +21,10 @@ namespace Destination
         {
             playerMovement = GetComponent<PlayerMovement>();
 
-            staminaBar.maxValue = maxStamina;
-            staminaBar.value = maxStamina;
+            currentStamina = maxStamina;
+
+            //staminaBar.maxValue = maxStamina;
+            //staminaBar.value = maxStamina;
         }
 
         private void Update()
@@ -41,24 +42,24 @@ namespace Destination
 
             if (isMoving && gamepad.leftStickButton.isPressed)
             {
-                staminaBar.value -= Time.deltaTime / staminaFallRate * staminaFallMultiplier;
+                //staminaBar.value -= Time.deltaTime / staminaFallRate * staminaFallMultiplier;
                 currentStamina -= Time.deltaTime / staminaFallRate * staminaFallMultiplier;
             }
             else
             {
-                staminaBar.value += Time.deltaTime / staminaRegenRate * staminaRegenMultiplier;
+                //staminaBar.value += Time.deltaTime / staminaRegenRate * staminaRegenMultiplier;
                 currentStamina += Time.deltaTime / staminaRegenRate * staminaRegenMultiplier;
             }
 
             if (currentStamina >= maxStamina)
             {
-                staminaBar.value = maxStamina;
+                //staminaBar.value = maxStamina;
 
                 currentStamina = maxStamina;
             }
             else if (currentStamina <= 0)
             {
-                staminaBar.value = 0;
+                //staminaBar.value = 0;
                 currentStamina = 0;
 
                 playerMovement.sprintSpeed = playerMovement.walkSpeed;

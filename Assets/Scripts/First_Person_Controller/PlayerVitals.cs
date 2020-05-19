@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace Destination
@@ -79,26 +78,6 @@ namespace Destination
         }
 
         private void AdjustOpacity(float _alpha) => damageOverlay.color = new Color(damageOverlay.color.r, damageOverlay.color.g, damageOverlay.color.b, _alpha);
-
-        private void Update()
-        {
-            if (Keyboard.current.pKey.wasPressedThisFrame)
-            {
-                ChangeHealth(20, false);
-            }
-        }
-
-        private void OnTriggerEnter(Collider other) // Temp for testing inventory system
-        {
-            GroundItem item = other.GetComponent<GroundItem>();
-
-            if (item)
-            {
-                inventory.AddItem(new Item(item.item), 3);
-
-                Destroy(other.gameObject);
-            }
-        }
 
         private void Die() => InterfaceManager.instance.OpenMenu("respawn");
 

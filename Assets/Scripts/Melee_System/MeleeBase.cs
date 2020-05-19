@@ -29,14 +29,14 @@ namespace Destination
 
             if (gamepad == null) return;
 
-            if (switchWeapon.currentWeapon == "Melee")
+            if (gamepad.rightShoulder.wasPressedThisFrame)
             {
-                if (Time.time >= nextAttackTime)
+                if (switchWeapon.currentWeapon == "Melee")
                 {
-                    animator.SetBool("isAttack", false);
-
-                    if (gamepad.rightShoulder.wasPressedThisFrame)
+                    if (Time.time >= nextAttackTime)
                     {
+                        animator.SetBool("isAttack", false);
+
                         Attack();
 
                         nextAttackTime = Time.time + 1f / attackRate;
@@ -63,7 +63,7 @@ namespace Destination
             }
         }
 
-        private void OnDrawGizmosSelected() // Debug for testing attack range
+        private void OnDrawGizmosSelected() // Debug for displaying the attack range
         {
             if (attackPoint == null) return;
 

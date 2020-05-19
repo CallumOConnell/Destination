@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.048036736, g: 0.034002155, b: 0.03137993, a: 1}
+  m_IndirectSpecularColor: {r: 0.00018764696, g: 0.00013282207, b: 0.000122581, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1408,8 +1408,6 @@ MonoBehaviour:
   inventory: {fileID: 11400000, guid: 122aca2135e2cca4983eccac62fdc323, type: 2}
   crowbar: {fileID: 11400000, guid: 70c80a658b1def341b70bffbc34b7739, type: 2}
   pickupItem: {fileID: 0}
-  audioSource: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: e9fc49b99e3cbfc43a4117e84d470b12, type: 3}
 --- !u!65 &340058598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2825,7 +2823,6 @@ GameObject:
   - component: {fileID: 580910370}
   - component: {fileID: 580910369}
   - component: {fileID: 580910368}
-  - component: {fileID: 580910367}
   m_Layer: 0
   m_Name: Example_Ground_Item_2
   m_TagString: Untagged
@@ -2847,19 +2844,6 @@ Transform:
   m_Father: {fileID: 690961235}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &580910367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 580910365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb7f47b7cbe41b4bb280f25d1febaf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 5bb70f8b114ed54478fc13bc14fe24f8, type: 2}
 --- !u!65 &580910368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5214,7 +5198,6 @@ GameObject:
   - component: {fileID: 880478274}
   - component: {fileID: 880478273}
   - component: {fileID: 880478272}
-  - component: {fileID: 880478271}
   m_Layer: 0
   m_Name: Example_Ground_Item_4
   m_TagString: Untagged
@@ -5236,19 +5219,6 @@ Transform:
   m_Father: {fileID: 690961235}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &880478271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880478269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb7f47b7cbe41b4bb280f25d1febaf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 5bb70f8b114ed54478fc13bc14fe24f8, type: 2}
 --- !u!65 &880478272
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12771,7 +12741,6 @@ GameObject:
   - component: {fileID: 1819608626}
   - component: {fileID: 1819608625}
   - component: {fileID: 1819608624}
-  - component: {fileID: 1819608623}
   m_Layer: 0
   m_Name: Example_Ground_Item_3
   m_TagString: Untagged
@@ -12793,19 +12762,6 @@ Transform:
   m_Father: {fileID: 690961235}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1819608623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819608621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb7f47b7cbe41b4bb280f25d1febaf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 5bb70f8b114ed54478fc13bc14fe24f8, type: 2}
 --- !u!65 &1819608624
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14310,7 +14266,6 @@ GameObject:
   - component: {fileID: 2103782901}
   - component: {fileID: 2103782900}
   - component: {fileID: 2103782899}
-  - component: {fileID: 2103782898}
   m_Layer: 0
   m_Name: Example_Ground_Item_1
   m_TagString: Untagged
@@ -14332,19 +14287,6 @@ Transform:
   m_Father: {fileID: 690961235}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2103782898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103782896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eb7f47b7cbe41b4bb280f25d1febaf7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 5bb70f8b114ed54478fc13bc14fe24f8, type: 2}
 --- !u!65 &2103782899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16356,7 +16298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4dcfe5f2710fc4abc6638d25d34ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaBar: {fileID: 671122588}
   maxStamina: 100
   staminaFallRate: 1
   staminaFallMultiplier: 10

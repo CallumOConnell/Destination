@@ -120,18 +120,6 @@ namespace Destination
                     }
                 }
             }
-            else
-            {
-                Debug.LogError($"Couldn't find quest event with id of {_id}");
-            }
-        }
-
-        public void PrintPaths()
-        {
-            foreach (QuestEvent _event in questEvents)
-            {
-                Debug.Log($"Name: {_event.name} Order: {_event.order} Status: {_event.status}");
-            }
         }
     }
 }

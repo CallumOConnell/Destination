@@ -21,9 +21,6 @@ namespace Destination
 
         public string ToolTip => tooltip;
 
-        public virtual void OnInteract()
-        {
-            Debug.Log($"Interacted: {gameObject.name}");
-        }
+        public virtual void OnInteract() {}
     }
 }

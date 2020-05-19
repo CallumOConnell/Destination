@@ -9,10 +9,6 @@ namespace Destination
 
         public bool stackable;
 
-        public ItemType type;
-
-        [TextArea(15, 20)] public string description;
-
         public Item data = new Item();
 
         public Item CreateItem()
@@ -20,11 +16,6 @@ namespace Destination
             Item newItem = new Item(this);
 
             return newItem;
-        }
-
-        public virtual void Use()
-        {
-            Debug.Log($"Used: {name}");
         }
     }
 }

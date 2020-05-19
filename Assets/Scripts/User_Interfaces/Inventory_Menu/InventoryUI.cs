@@ -25,8 +25,6 @@ namespace Destination
         public int ySpaceBetweenItems;
         public int columns;
 
-        private float lastClick = 0f, interval = 0.4f;
-
         public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
         private void OnEnable()
@@ -64,7 +62,6 @@ namespace Destination
 
                 AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
                 AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(); });
-                AddEvent(obj, EventTriggerType.PointerClick, delegate { OnClick(obj); });
                 AddEvent(obj, EventTriggerType.BeginDrag, delegate { OnDragStart(obj); });
                 AddEvent(obj, EventTriggerType.EndDrag, delegate { OnDragEnd(obj); });
                 AddEvent(obj, EventTriggerType.Drag, delegate { OnDrag(); });
@@ -142,28 +139,6 @@ namespace Destination
             if (MouseData.tempItemBeingDragged != null)
             {
                 MouseData.tempItemBeingDragged.GetComponent<RectTransform>().position = Input.mousePosition;
-            }
-        }
-
-        public void OnClick(GameObject obj)
-        {
-            if (MouseData.interfaceMouseIsOver == null) return;
-
-            if (MouseData.slotHoveredOver)
-            {
-                if (slotsOnInterface[obj].item.id >= 0)
-                {
-                    if ((lastClick + interval) > Time.time) // Double click 
-                    {
-                        InventorySlot mouseHoverSlotData = MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver];
-
-                        mouseHoverSlotData.GetItemObject().Use();
-                    }
-                    else // Single click
-                    {
-                        lastClick = Time.time;
-                    }
-                }
             }
         }
 

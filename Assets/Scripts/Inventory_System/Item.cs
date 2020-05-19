@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Destination
+﻿namespace Destination
 {
     [System.Serializable]
     public class Item
@@ -18,11 +16,6 @@ namespace Destination
         {
             name = _item.name;
             id = _item.data.id;
-        }
-
-        public virtual void Use()
-        {
-            Debug.Log($"Used: {name}");
         }
     }
 }

@@ -65,7 +65,7 @@ namespace Destination
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
         }
 
-        private void OnDrawGizmosSelected() // Debug code?
+        private void OnDrawGizmosSelected() // Debug for viewing detection radius
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, hearingRadius);
