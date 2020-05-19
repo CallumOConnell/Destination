@@ -29,14 +29,14 @@ namespace Destination
 
             if (gamepad == null) return;
 
-            if (gamepad.rightShoulder.wasPressedThisFrame)
+            if (switchWeapon.currentWeapon == "Melee")
             {
-                if (switchWeapon.currentWeapon == "Melee")
+                if (Time.time >= nextAttackTime)
                 {
-                    if (Time.time >= nextAttackTime)
-                    {
-                        animator.SetBool("isAttack", false);
+                    animator.SetBool("isAttack", false);
 
+                    if (gamepad.rightShoulder.wasPressedThisFrame)
+                    {
                         Attack();
 
                         nextAttackTime = Time.time + 1f / attackRate;

@@ -1407,7 +1407,7 @@ MonoBehaviour:
   tooltip: Pickup
   inventory: {fileID: 11400000, guid: 122aca2135e2cca4983eccac62fdc323, type: 2}
   crowbar: {fileID: 11400000, guid: 70c80a658b1def341b70bffbc34b7739, type: 2}
-  pickupItem: {fileID: 0}
+  pickupItem: {fileID: 1990491259}
 --- !u!65 &340058598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1658,13 +1658,15 @@ MonoBehaviour:
   amountToPool: 10
   itemHolder: {fileID: 690961235}
   itemsPrefabs:
-  - {fileID: 5791872098508425032, guid: d341fb99d06ec5a48af6b4c3bf18c50b, type: 3}
+  - {fileID: 6562868456690918939, guid: e75a7b36aea4a5e438a85c73b654318b, type: 3}
   - {fileID: 4269209283427466439, guid: 787220d8816704c46acd6ad9ef5da3d8, type: 3}
   spawnPositions:
   - {fileID: 278630935}
   - {fileID: 1383016418}
   - {fileID: 376459615}
   - {fileID: 645246263}
+  inventory: {fileID: 11400000, guid: 122aca2135e2cca4983eccac62fdc323, type: 2}
+  startingWeapon: {fileID: 11400000, guid: 70c80a658b1def341b70bffbc34b7739, type: 2}
 --- !u!1 &401356638
 GameObject:
   m_ObjectHideFlags: 0
@@ -9179,7 +9181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1409594288
 Transform:
   m_ObjectHideFlags: 0
@@ -13802,7 +13804,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 122aca2135e2cca4983eccac62fdc323, type: 2}
   medkit: {fileID: 11400000, guid: 5bb70f8b114ed54478fc13bc14fe24f8, type: 2}
-  player: {fileID: 4418539848899052880}
+  timer: {fileID: 0}
 --- !u!114 &1990491261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15236,7 +15238,7 @@ MonoBehaviour:
   bulletHole: {fileID: 5362887482004123878, guid: a88950a29ce3cfb4689ad4ecd1763bff,
     type: 3}
   tempEffects: {fileID: 900944895}
-  muzzleFlash: {fileID: 0}
+  muzzleFlash: {fileID: 19800004, guid: 0438351a6e6422d43a09930e9be00ee9, type: 3}
   currentAmmo: 0
 --- !u!4 &789643437033682767
 Transform:
@@ -17836,7 +17838,7 @@ PrefabInstance:
     - target: {fileID: 7165724015601246367, guid: 9914668940c9ecc489811c2460d468c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2486.6355
+      value: 2419.5
       objectReference: {fileID: 0}
     - target: {fileID: 7165724015601246367, guid: 9914668940c9ecc489811c2460d468c4,
         type: 3}
@@ -17861,7 +17863,7 @@ PrefabInstance:
     - target: {fileID: 7165724015601246367, guid: 9914668940c9ecc489811c2460d468c4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7165724015601246367, guid: 9914668940c9ecc489811c2460d468c4,
         type: 3}
