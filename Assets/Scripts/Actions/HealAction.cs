@@ -10,11 +10,7 @@ namespace Destination
 
         public ItemObject medkit;
 
-        public GameObject player;
-
-        private Timer timer;
-
-        private void Start() => timer = GetComponent<Timer>();
+        public Timer timer;
 
         private void Update()
         {
@@ -33,7 +29,7 @@ namespace Destination
         {
             if (inventory.IsItemInInventory(medkit))
             {
-                if (player.GetComponent<PlayerVitals>().currentHealth < player.GetComponent<PlayerVitals>().maxHealth)
+                if (GetComponent<PlayerVitals>().currentHealth < GetComponent<PlayerVitals>().maxHealth)
                 {
                     timer.CreateTimer(5f);
 
@@ -41,7 +37,7 @@ namespace Destination
 
                     inventory.RemoveItem(new Item(medkit), 1);
 
-                    player.GetComponent<PlayerVitals>().ChangeHealth(25, true);
+                    GetComponent<PlayerVitals>().ChangeHealth(25, true);
                 }
             }
         }

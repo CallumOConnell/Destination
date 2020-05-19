@@ -1746,7 +1746,7 @@ AudioSource:
   m_GameObject: {fileID: 7165724015601246366}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 27e5fabedc41d2545bfff7bc59638e53,
+  OutputAudioMixerGroup: {fileID: -1859903152336810066, guid: 27e5fabedc41d2545bfff7bc59638e53,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 854c771e0c65e8d488316a3e3444448c, type: 3}
   m_PlayOnAwake: 1
@@ -1905,7 +1905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  hearingRadius: 10
+  hearingRadius: 17
   attackRate: 1
   damageGiven: 5
 --- !u!1 &7165724015657873612

@@ -824,7 +824,9 @@ MonoBehaviour:
   loadingText: {fileID: 1028986665}
   tipsText: {fileID: 22535334}
   alphaCanvas: {fileID: 22535333}
-  backgrounds: []
+  backgrounds:
+  - {fileID: 21300000, guid: acf7f1aa4a822d142bb6ffc2834df5ba, type: 3}
+  - {fileID: 21300000, guid: b1dce44d07af80c4aa26719493ca2f3b, type: 3}
   backgroundImage: {fileID: 173943871}
   tips:
   - Test tip 1

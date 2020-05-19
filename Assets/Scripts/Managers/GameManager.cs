@@ -44,7 +44,7 @@ namespace Destination
 
         public void LoadGame()
         {
-            //backgroundImage.sprite = backgrounds[Random.Range(0, backgrounds.Length)];
+            backgroundImage.sprite = backgrounds[Random.Range(0, backgrounds.Length)];
 
             loadingScreen.SetActive(true);
 
@@ -59,7 +59,7 @@ namespace Destination
 
         public void RestartGame()
         {
-            //backgroundImage.sprite = backgrounds[Random.Range(0, backgrounds.Length)];
+            backgroundImage.sprite = backgrounds[Random.Range(0, backgrounds.Length)];
 
             loadingScreen.SetActive(true);
 

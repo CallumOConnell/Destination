@@ -27,6 +27,8 @@ namespace Destination
             if (playerInventory.IsItemInInventory(crowbar))
             {
                 animator.SetBool("isOpen", true);
+
+                gameObject.layer = 0;
             }
             else
             {

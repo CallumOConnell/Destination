@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Destination;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -31,6 +32,11 @@ public class Initialisation : MonoBehaviour
     public Transform[] spawnPositions;
 
     private List<GameObject> pooledObjects;
+
+    [Space, Header("Inventory Settings")]
+    public InventoryObject inventory;
+
+    public ItemObject startingWeapon;
 
     private void Awake()
     {
@@ -149,6 +155,10 @@ public class Initialisation : MonoBehaviour
 
             progress = i / (float)60;
         }
+
+        inventory.Clear();
+
+        inventory.AddItem(new Item(startingWeapon), 1);
 
         yield return new WaitForSeconds(0.5f);
 
