@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f807e5b5c8d688044b4eefbb1ded3edc, type: 3}
   m_Name: Story
   m_EditorClassIdentifier: 
-  title: Test Note
-  author: Test Authro
-  content: This is a test note with lots of random writing ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
-  thoughts: This is a very interesting note I have found here...
-  audioClip: {fileID: 8300000, guid: e0ce6cf961f691d4285b7aa1d8266159, type: 3}
+  title: 
+  author: 
+  content: 'Anna I hope you are reading this
+
+    we got split of from people in
+    the group
+
+    meet us at the second checkpoint
+
+
+'
+  thoughts: I need to make sure I find my team before anything bad happens
+  audioClip: {fileID: 0}
