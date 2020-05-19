@@ -28,9 +28,14 @@ namespace Destination
 
             InterfaceManager.instance.OpenMenu("note");
 
-            audioSource.clip = _note.audioClip;
+            if (_note.audioClip != null)
+            {
+                audioSource.clip = _note.audioClip;
 
-            PlayAudio();
+                PlayAudio();
+
+                playButton.gameObject.SetActive(true);
+            }
         }
 
         public void CloseNote()

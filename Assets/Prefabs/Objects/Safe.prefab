@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3752370670023125175}
   - component: {fileID: 8172254248731083694}
-  - component: {fileID: 8172254248731083697}
   - component: {fileID: 8172254248731083696}
   m_Layer: 11
   m_Name: Safe
@@ -53,19 +52,6 @@ MonoBehaviour:
   isInteractable: 1
   tooltip: Unlock
   safeMenu: {fileID: 0}
---- !u!65 &8172254248731083697
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164452746135886500}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &8172254248731083696
 Animator:
   serializedVersion: 3

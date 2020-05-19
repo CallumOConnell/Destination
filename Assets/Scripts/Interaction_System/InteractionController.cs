@@ -112,7 +112,10 @@ namespace Destination
                 }
             }
 
-            interactionUI.UpdateChargeProgress(holdTimer / holdDuration);
+            if (interactionData.Interactable != null && interactionData.Interactable.HoldInteract)
+            {
+                interactionUI.UpdateChargeProgress(holdTimer / holdDuration);
+            }
         }
     }
 }

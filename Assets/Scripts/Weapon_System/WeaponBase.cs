@@ -167,7 +167,7 @@ namespace Destination
                 return;
             }
 
-            // Muzzle flash here
+            muzzleFlash.Play();
 
             audioSource.PlayOneShot(gunShootSound);
 
