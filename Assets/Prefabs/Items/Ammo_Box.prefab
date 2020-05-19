@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1972721339895549805}
   - component: {fileID: 5214054494991905684}
   - component: {fileID: 2540366549229248069}
-  - component: {fileID: 2540366549229248066}
+  - component: {fileID: 2098317614640098077}
   m_Layer: 11
   m_Name: Ammo_Box
   m_TagString: Untagged
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5359217, y: 1.5805345, z: 1.0561032}
   m_Center: {x: -0.000015202628, y: -0.025121797, z: 0.51338583}
---- !u!114 &2540366549229248066
+--- !u!114 &2098317614640098077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,5 @@ MonoBehaviour:
   holdDuration: 0
   isInteractable: 1
   tooltip: Pickup
-  weaponBase: {fileID: 0}
   amount: 30
-  pickupItem: {fileID: 0}
   icon: {fileID: 21300000, guid: 52d7891db2991264b98241e00a3cc57e, type: 3}

@@ -8,8 +8,6 @@ namespace Destination
 
         public ItemObject medkit;
 
-        public PickupItem pickupItem;
-
         public override void OnInteract()
         {
             base.OnInteract();
@@ -18,7 +16,7 @@ namespace Destination
 
             Destroy(gameObject);
 
-            pickupItem.Display(medkit.name, 1, medkit.icon);
+            FindObjectOfType<Canvas>().GetComponent<PickupItem>().Display(medkit.name, 1, medkit.icon);
         }
     }
 }

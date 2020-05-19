@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.048036736, g: 0.034002155, b: 0.03137993, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1659,8 +1659,14 @@ MonoBehaviour:
   positions: []
   amountToPool: 10
   itemHolder: {fileID: 690961235}
-  itemsPrefabs: []
-  spawnPositions: []
+  itemsPrefabs:
+  - {fileID: 5791872098508425032, guid: d341fb99d06ec5a48af6b4c3bf18c50b, type: 3}
+  - {fileID: 4269209283427466439, guid: 787220d8816704c46acd6ad9ef5da3d8, type: 3}
+  spawnPositions:
+  - {fileID: 278630935}
+  - {fileID: 1383016418}
+  - {fileID: 376459615}
+  - {fileID: 645246263}
 --- !u!1 &401356638
 GameObject:
   m_ObjectHideFlags: 0
@@ -9977,11 +9983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questUI: {fileID: 326858036}
   questCompletedText: {fileID: 2071155088}
-  aLocation: {fileID: 1605964144}
-  bLocation: {fileID: 1247218205}
-  cLocation: {fileID: 1605964144}
-  dLocation: {fileID: 1605964144}
-  eLocation: {fileID: 1605964144}
+  questFinalLocation: {fileID: 1605964144}
 --- !u!1 &1537773636
 GameObject:
   m_ObjectHideFlags: 0
@@ -11126,9 +11128,7 @@ MonoBehaviour:
   holdDuration: 0
   isInteractable: 1
   tooltip: Pickup
-  weaponBase: {fileID: 0}
   amount: 30
-  pickupItem: {fileID: 1990491259}
   icon: {fileID: 21300000, guid: d06437024d56f014aa9956ef04703d9e, type: 3}
 --- !u!65 &1672312483
 BoxCollider:
@@ -16541,11 +16541,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279cc6088d341a246b18a39c17928158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  gravity: -9.18
-  jumpHeight: 1.5
+  walkSpeed: 6
+  walkSpeedNormal: 6
   sprintSpeed: 6
   sprintSpeedNormal: 6
+  gravity: -9.18
+  jumpHeight: 1.5
   groundDistance: 0.3
   groundCheck: {fileID: 4418539850042649928}
   groundMask:
@@ -16567,6 +16568,7 @@ MonoBehaviour:
   maxHealth: 100
   damageOverlay: {fileID: 2081666242}
   inventory: {fileID: 11400000, guid: 122aca2135e2cca4983eccac62fdc323, type: 2}
+  dead: 0
 --- !u!4 &4418539848899052895
 Transform:
   m_ObjectHideFlags: 0

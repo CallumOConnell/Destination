@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using System.Linq;
 
 namespace Destination
 {
@@ -42,6 +43,8 @@ namespace Destination
                     currentResolutionIndex = i;
                 }
             }
+
+            options.Reverse();
 
             resolutionDropDown.AddOptions(options);
 
