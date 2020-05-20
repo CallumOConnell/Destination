@@ -53,7 +53,10 @@ namespace Destination
                 }
             }
 
-            SelectQuest(availableQuests.gameObject, 0);
+            if (quests.Count > 0)
+            {
+                SelectQuest(availableQuests.gameObject, 0);
+            }
         }
 
         public void SelectQuest(GameObject listBox, int indexSelected)

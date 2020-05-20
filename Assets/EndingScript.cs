@@ -1,26 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EndingScript : MonoBehaviour
 {
+    public GameObject endingMenu;
+    public GameObject hud;
 
-    public GameObject EndingUI;
-    public GameObject HUD;
-    public AudioSource AS;
+    public AudioSource audioSource;
+
     public AudioClip endingSong;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider _other)
     {
 
-        if (other.CompareTag("Player"))
+        if (_other.CompareTag("Player"))
         {
+            hud.SetActive(false);
 
-            HUD.SetActive(false);
-            EndingUI.SetActive(true);
-            AS.PlayOneShot(endingSong);    
-
+            endingMenu.SetActive(true);
+            
+            audioSource.PlayOneShot(endingSong);    
         }
-
     }
 }
