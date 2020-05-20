@@ -20,11 +20,11 @@ namespace Destination
         private void Start()
         {
             // Define quest basic details
-            Quest quest = new Quest("Test Quest", "First quest to complete.", "Storyline Quest");
+            Quest quest = new Quest("Lost", "First quest to complete.", "Storyline Quest");
 
             // Define quest objectives
             // Create each event within the quest
-            QuestEvent a = quest.AddQuestEvent("test1", "description 1", questFinalLocation, quest);
+            QuestEvent a = quest.AddQuestEvent("Lost", "I need to find my team, Im going to make it to the local checkpoint at the hotel to see if they are there.", questFinalLocation, quest);
 
             // Define the paths between the events - e.g. the order they must be completed in
             quest.AddPath(a.GetID(), a.GetID());

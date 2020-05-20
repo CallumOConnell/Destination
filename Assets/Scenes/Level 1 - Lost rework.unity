@@ -1687,7 +1687,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112706589}
   m_LocalRotation: {x: -0.4989216, y: 0.50122976, z: 0.5010742, w: 0.49876913}
-  m_LocalPosition: {x: -156.69, y: -21.253, z: 7.986}
+  m_LocalPosition: {x: -157.322, y: -19.899, z: 7.986}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 1339963554}
@@ -29477,6 +29477,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1564472893}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1564814191 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7449026280589510100, guid: 4740a49dba25fda4aa497cf2b2fe876d,
+    type: 3}
+  m_PrefabInstance: {fileID: 755554141}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1565553785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53425,7 +53431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compassPointer: {fileID: 994835663162283057}
-  compassTarget: {fileID: 0}
+  compassTarget: {fileID: 1564814191}
   player: {fileID: 1676845816498421677}
   compassLine: {fileID: 994835662774577042}
 --- !u!114 &994835663612614716
