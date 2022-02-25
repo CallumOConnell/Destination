@@ -43,6 +43,9 @@ namespace Destination
 
         private void GetInteractionInputData()
         {
+            if (interactionInputData == null) return;
+            if (gamepad == null) return;
+
             interactionInputData.InteractedClicked = gamepad.buttonWest.wasPressedThisFrame;
             interactionInputData.InteractedReleased = gamepad.buttonWest.wasReleasedThisFrame;
         }

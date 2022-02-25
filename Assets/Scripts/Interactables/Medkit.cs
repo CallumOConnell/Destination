@@ -12,6 +12,8 @@ namespace Destination
         {
             base.OnInteract();
 
+            if (inventory == null || medkit == null) return;
+
             inventory.AddItem(new Item(medkit), 1);
 
             Destroy(gameObject);

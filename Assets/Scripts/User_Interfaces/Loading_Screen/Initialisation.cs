@@ -80,7 +80,12 @@ public class Initialisation : MonoBehaviour
 
             if (enemy != null)
             {
-                enemy.GetComponent<NavMeshAgent>().Warp(spawnPoint.transform.position);
+                var agent = enemy.GetComponent<NavMeshAgent>();
+
+                if (agent == null) continue;
+
+                agent.enabled = true;
+                agent.Warp(spawnPoint.transform.position);
 
                 enemy.SetActive(true);
             }

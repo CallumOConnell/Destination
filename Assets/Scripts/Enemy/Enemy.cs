@@ -85,6 +85,7 @@ namespace Destination
             dead = true;
 
             gameObject.GetComponent<AudioSource>().Stop();
+            gameObject.GetComponent<Collider>().enabled = false;
 
             enemyAgent.isStopped = true;
 

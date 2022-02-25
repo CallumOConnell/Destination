@@ -11,7 +11,7 @@ public class LightFlicker : MonoBehaviour
     [Range(1, 50)]
     public int smoothing = 5;
 
-    private new Light light;
+    private Light _light;
 
     private Queue<float> smoothQueue;
     
@@ -27,7 +27,7 @@ public class LightFlicker : MonoBehaviour
     {
         smoothQueue = new Queue<float>(smoothing);
 
-        light = GetComponent<Light>();
+        _light = GetComponent<Light>();
     }
 
     private void Update()
@@ -43,6 +43,6 @@ public class LightFlicker : MonoBehaviour
 
         lastSum += newVal;
 
-        light.intensity = lastSum / (float)smoothQueue.Count;
+        _light.intensity = lastSum / smoothQueue.Count;
     }
 }

@@ -32,9 +32,12 @@ namespace Destination
             }
             else
             {
-                audioSource.clip = audioClip;
+                if (audioSource != null && audioClip != null)
+                {
+                    audioSource.clip = audioClip;
 
-                audioSource.Play();
+                    audioSource.Play();
+                }
             }
         }
     }
